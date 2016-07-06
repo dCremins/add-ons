@@ -1,0 +1,53 @@
+div.radio {
+  display: inline-block;
+  width: 50px;
+  height: 70px;
+}
+
+div.radio label {
+  display: block;
+  text-align: center;
+  margin: 10px auto 0;
+}
+
+div.radio label img {
+  height: 30px;
+}
+
+div.radio input {
+  display: block;
+  text-align: center;
+  margin: 10px auto 0;
+}
+
+.layout {
+  margin-bottom: 20px;
+}
+
+.edit-shortcode-form div.edit-shortcode-form-fields.shortcode-ui-edit-itre_news {
+  /* ITRE News Styles */
+}
+
+.edit-shortcode-form div.edit-shortcode-form-fields.shortcode-ui-edit-itre_news div {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.edit-shortcode-form div.edit-shortcode-form-fields.shortcode-ui-edit-itre_news div div.shortcode-ui-field-radio {
+  float: left;
+  text-align: center;
+  margin: 0 10px;
+}
+
+.edit-shortcode-form div.edit-shortcode-form-fields.shortcode-ui-edit-itre_news div div.field-block.shortcode-ui-field-text {
+  padding-bottom: 0;
+}
+
+.edit-shortcode-form div.edit-shortcode-form-fields.shortcode-ui-edit-itre_news div div.field-block.shortcode-ui-field-text p.description {
+  font-style: normal;
+  margin: 25px 0 0;
+}
+
+.edit-shortcode-form div.edit-shortcode-form-fields.shortcode-ui-edit-itre_news div div.shortcode-ui-attribute-category {
+  clear: both;
+}

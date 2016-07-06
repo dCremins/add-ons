@@ -1,0 +1,135 @@
+form.search-form .divider {
+  padding-top: 32px;
+  float: left;
+  width: 10%;
+  text-align: center;
+}
+
+@media (max-width: 992px) {
+  form.search-form .divider {
+    float: none;
+    padding: 5px 0;
+    margin-bottom: -22px;
+    width: 100%;
+  }
+}
+
+form.search-form .dateSearch {
+  width: 45%;
+  float: left;
+}
+
+@media (max-width: 992px) {
+  form.search-form .dateSearch {
+    width: 100%;
+    float: none;
+  }
+}
+
+form.search-form .dateSearch input {
+  width: 100%;
+}
+
+form.search-form .dateSearch input::-webkit-inner-spin-button {
+  display: none;
+}
+
+form.search-form .dateSearch input::-webkit-datetime-edit {
+  padding-right: 0;
+}
+
+form.search-form .input-group {
+  width: 100%;
+}
+
+form.search-form .input-group select.form-control {
+  width: 100%;
+  border: 0;
+  outline: 1px solid #CCC;
+  background-color: white;
+}
+
+form.search-form .input-group span.input-group-btn {
+  width: 23%;
+  border-radius: 0;
+}
+
+form.search-form button {
+  width: 100%;
+}
+
+article.layoutA {
+  float: left;
+  width: 45%;
+  margin: 0 2% 10px;
+  overflow: hidden;
+}
+
+article.layoutA .newsImage {
+  width: 230px;
+  height: 170px;
+  overflow: hidden;
+}
+
+article.layoutA:first-of-type {
+  width: 95%;
+  float: none;
+}
+
+article.layoutA:first-of-type .newsImage {
+  height: auto;
+  width: 100%;
+}
+
+article.layoutB .newsImage {
+  width: 95%;
+  height: auto;
+  overflow: hidden;
+}
+
+article.layoutC {
+  width: 100%;
+}
+
+article.layoutC .newsImage {
+  float: left;
+  margin-right: 20px;
+}
+
+article.layoutD {
+  float: left;
+  width: 45%;
+  margin: 0 2%;
+  overflow: hidden;
+}
+
+article.layoutD .newsImage {
+  width: 230px;
+  height: 170px;
+  overflow: hidden;
+}
+
+article.layoutD .floatD {
+  float: left;
+}
+
+article.newsFront h4 {
+  margin: 0 0 10px;
+  font-size: 16px;
+}
+
+article.newsFront p {
+  font-size: 14px;
+}
+
+article.newsFront img {
+  margin: 0;
+}
+
+article.newsFront .newsImage {
+  margin-bottom: 10px;
+}
+
+.itre_news {
+  margin: 15px auto 0;
+}

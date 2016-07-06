@@ -1,0 +1,21 @@
+div.radio {
+  display:inline-block;
+  width:50px;
+  height: 70px;
+  label {
+    display:block;
+    text-align: center;
+    margin: 10px auto 0;
+    img {
+      height: 30px;
+    }
+  }
+  input {
+    display: block;
+    text-align: center;
+    margin: 10px auto 0;
+  }
+}
+.layout {
+  margin-bottom:20px;
+}

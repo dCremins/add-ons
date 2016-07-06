@@ -1,0 +1,23 @@
+.edit-shortcode-form div.edit-shortcode-form-fields.shortcode-ui-edit-itre_news {
+  /* ITRE News Styles */
+  div {
+    margin-bottom:0;
+    padding-bottom:0;
+    div.shortcode-ui-field-radio {
+      float: left;
+      text-align: center;
+      margin: 0 10px;
+    }
+
+    div.field-block.shortcode-ui-field-text {
+      padding-bottom: 0;
+      p.description {
+        font-style: normal;
+        margin: 25px 0 0;
+      }
+    }
+    div.shortcode-ui-attribute-category {
+      clear:both;
+    }
+  }
+}
