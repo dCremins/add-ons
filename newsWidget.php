@@ -154,6 +154,7 @@ class itre_news extends WP_Widget {
 
 } //class end
 
+
 // register widget
 add_action( 'widgets_init', function () {
     register_widget( 'itre_news' );
