@@ -1,4 +1,5 @@
 <?php
+/*  ITRE NEWS  */
 
 function itre_news_shortcode($atts) {
   extract(shortcode_atts(array(
