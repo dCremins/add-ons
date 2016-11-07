@@ -1,0 +1,40 @@
+.icon {
+  background-color: $red;
+  border: $red 5px solid;
+  border-radius: 50px;
+  display: flex;
+  height: 90px;
+  margin: auto;
+  width: 90px;
+
+  span {
+    color: $white;
+    font-size: 50px;
+    margin: auto;
+  }
+}
+
+a:hover {
+  .icon {
+    background-color: $white;
+    border: $red 5px solid;
+
+    span {
+      color: $red;
+    }
+  }
+}
+
+.itre-callout {
+  padding: 20px 0;
+  text-align: center;
+
+  h3 {
+    color: $red;
+    margin: 18px auto 8px;
+  }
+
+  p {
+    margin: 0;
+  }
+}

@@ -10,20 +10,13 @@ GitHub Enterprise: https://github.ncsu.edu
 GitHub Plugin URI: https://github.ncsu.edu/drcremin/itre-plugin
 */
 
-require_once( dirname( __FILE__ ) . '/widgets/searchWidget.php' );
-require_once( dirname( __FILE__ ) . '/widgets/newsWidget.php' );
 require_once( dirname( __FILE__ ) . '/functions.php' );
 
 /* Add Style.css */
 add_action('wp_enqueue_scripts', function(){
 	wp_enqueue_style( 'myCSS', plugins_url( '/style.css', __FILE__ ) );
 });
-/*
-function assignPageTitle(){
-  return "Title goes here";
-}
-add_filter('wp_title', 'assignPageTitle');
-*/
+
 /* Add Admin.css */
 add_action('admin_enqueue_scripts', function () {
 	wp_enqueue_style( 'adminCSS', plugins_url( '/admin.css', __FILE__ ) );

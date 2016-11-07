@@ -1,1 +1,16 @@
-$icon-color: rgb(166, 166, 166);
+$icon-color:      rgb(166, 166, 166);
+$black:           #000;
+$white:           #fff;
+$gray-darker:     lighten($black, 13.5%) !default; // #222
+$gray-dark:       lighten($black, 20%) !default;   // #333
+$gray:            lighten($black, 33.5%) !default; // #555
+$gray-light:      lighten($black, 60%) !default;   // #999
+$gray-lighter:    lighten($black, 93.5%) !default; // #eee
+
+$red:             #c00;
+$reynolds:        #900;
+$orange:          #d26c2c;
+$yellow:         	#fde148;
+$green:         	#a4b53a;
+$blue:         	  #47869c;
+$indigo:          #4156a1;

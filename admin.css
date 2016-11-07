@@ -8,7 +8,8 @@
 
 [class^='icon-'],
 [class*=' icon-'] {
-  font-family: 'icomoon' !important;
+  color: #a6a6a6;
+  font-family: 'icomoon';
   font-size: 30px;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -18,6 +19,22 @@
   line-height: 1;
   speak: none;
   text-transform: none;
+}
+
+.icon-inverse-trio::before {
+  content: '\e906';
+}
+
+.icon-inverse-four::before {
+  content: '\e907';
+}
+
+.icon-inverse-double::before {
+  content: '\e908';
+}
+
+.icon-inverse-stacked::before {
+  content: '\e909';
 }
 
 .icon-stacked-layout::before {

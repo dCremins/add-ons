@@ -28,7 +28,7 @@ function news_ui() {
             'description'  => 'Choose a Layout',
           ),
           array(
-            'label'        => '<img src="'.plugins_url( "images/LayoutA.png", __FILE__ ).'">',
+            'label'        => '<span class="icon-trio-layout">',
             'attr'         => 'layout',
             'type'         => 'radio',
             'options'      => array(
@@ -36,7 +36,7 @@ function news_ui() {
             ),
           ),
           array(
-            'label'        => '<img src="'.plugins_url( "images/LayoutB.png", __FILE__ ).'">',
+            'label'        => '<span class="icon-double-layout">',
             'attr'         => 'layout',
             'type'         => 'radio',
             'options'      => array(
@@ -44,7 +44,7 @@ function news_ui() {
             ),
           ),
           array(
-            'label'        => '<img src="'.plugins_url( "images/LayoutC.png", __FILE__ ).'">',
+            'label'        => '<span class="icon-stacked-layout">',
             'attr'         => 'layout',
             'type'         => 'radio',
             'options'      => array(
@@ -52,7 +52,7 @@ function news_ui() {
             ),
           ),
           array(
-            'label'        => '<img src="'.plugins_url( "images/LayoutD.png", __FILE__ ).'">',
+            'label'        => '<span class="icon-four-layout">',
             'attr'         => 'layout',
             'type'         => 'radio',
             'options'      => array(

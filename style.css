@@ -8,7 +8,9 @@
 
 [class^='icon-'],
 [class*=' icon-'] {
-  font-family: 'icomoon' !important;
+  color: #a6a6a6;
+  font-family: 'icomoon';
+  font-size: 30px;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   font-style: normal;
@@ -17,6 +19,22 @@
   line-height: 1;
   speak: none;
   text-transform: none;
+}
+
+.icon-inverse-trio::before {
+  content: '\e906';
+}
+
+.icon-inverse-four::before {
+  content: '\e907';
+}
+
+.icon-inverse-double::before {
+  content: '\e908';
+}
+
+.icon-inverse-stacked::before {
+  content: '\e909';
 }
 
 .icon-stacked-layout::before {
@@ -181,4 +199,43 @@ article.newsFront .newsImage {
 
 .itre_news {
   margin: 15px auto 0;
+}
+
+.icon {
+  background-color: #c00;
+  border: #c00 5px solid;
+  border-radius: 50px;
+  display: flex;
+  height: 90px;
+  margin: auto;
+  width: 90px;
+}
+
+.icon span {
+  color: #fff;
+  font-size: 50px;
+  margin: auto;
+}
+
+a:hover .icon {
+  background-color: #fff;
+  border: #c00 5px solid;
+}
+
+a:hover .icon span {
+  color: #c00;
+}
+
+.itre-callout {
+  padding: 20px 0;
+  text-align: center;
+}
+
+.itre-callout h3 {
+  color: #c00;
+  margin: 18px auto 8px;
+}
+
+.itre-callout p {
+  margin: 0;
 }

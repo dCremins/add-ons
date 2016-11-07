@@ -12,7 +12,8 @@
 [class^='icon-'],
 [class*=' icon-'] {
   // use !important to prevent issues with browser extensions that change fonts
-  font-family: 'icomoon' !important;
+  color: $icon-color;
+  font-family: 'icomoon';
   font-size: 30px;
   // Better Font Rendering
   -moz-osx-font-smoothing: grayscale;
@@ -23,6 +24,22 @@
   line-height: 1;
   speak: none;
   text-transform: none;
+}
+
+.icon-inverse-trio::before {
+  content: '\e906';
+}
+
+.icon-inverse-four::before {
+  content: '\e907';
+}
+
+.icon-inverse-double::before {
+  content: '\e908';
+}
+
+.icon-inverse-stacked::before {
+  content: '\e909';
 }
 
 .icon-stacked-layout::before {
