@@ -46,25 +46,25 @@ class itre_news extends WP_Widget {
 
 		<div class="layout">
       <div class="radio">
-        <?php echo '<label for="A"><img src="'.plugins_url( "images/LayoutA.png", __FILE__ ).'"></label>';
-        echo '<input type="radio" id="A" name="' . $this->get_field_name( 'layout' ) . '" value="A" ' . checked( $layout == 'A', true, false ) . '>'; ?>
+        <label for="A"><span class="icon-trio-layout"></span></label>
+        <?php echo '<input type="radio" id="A" name="' . $this->get_field_name( 'layout' ) . '" value="A" ' . checked( $layout == 'A', true, false ) . '>'; ?>
       </div>
 
       <div class="radio">
 	      <div class="radio">
-	        <?php echo '<label for="B"><img src="'.plugins_url( "images/LayoutB.png", __FILE__ ).'"></label>';
-	        echo '<input type="radio" id="B" name="' . $this->get_field_name( 'layout' ) . '" value="B" ' . checked( $layout == 'B', true, false ) . '>'; ?>
+					<label for="B"><span class="icon-double-layout"></span></label>
+	        <?php echo '<input type="radio" id="B" name="' . $this->get_field_name( 'layout' ) . '" value="B" ' . checked( $layout == 'B', true, false ) . '>'; ?>
 	      </div>
       </div>
 
       <div class="radio">
-        <?php echo '<label for="C"><img src="'.plugins_url( "images/LayoutC.png", __FILE__ ).'"></label>';
-        echo '<input type="radio" id="C" name="' . $this->get_field_name( 'layout' ) . '" value="C" ' . checked( $layout == 'C', true, false ) . '>'; ?>
+				<label for="C"><span class="icon-stacked-layout"></span></label>
+        <?php echo '<input type="radio" id="C" name="' . $this->get_field_name( 'layout' ) . '" value="C" ' . checked( $layout == 'C', true, false ) . '>'; ?>
       </div>
 
       <div class="radio">
-        <?php echo '<label for="D"><img src="'.plugins_url( "images/LayoutD.png", __FILE__ ).'"></label>';
-        echo '<input type="radio" id="D" name="' . $this->get_field_name( 'layout' ) . '" value="D" ' . checked( $layout == 'D', true, false ) . '>'; ?>
+				<label for="D"><span class="icon-four-layout"></span></label>
+        <?php echo '<input type="radio" id="D" name="' . $this->get_field_name( 'layout' ) . '" value="D" ' . checked( $layout == 'D', true, false ) . '>'; ?>
       </div>
 		</div>
 

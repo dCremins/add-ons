@@ -1,4 +1,6 @@
-@import "icons";
+// compileExpanded: ../$1.css
+@import 'variables';
+@import 'icons';
 
-@import "search";
-@import "newsFront";
+@import 'search';
+@import 'newsFront';

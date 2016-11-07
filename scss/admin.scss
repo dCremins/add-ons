@@ -1,2 +1,5 @@
-@import "news";
-@import "shortcake";
+// compileExpanded: ../$1.css
+@import 'variables';
+@import 'icons';
+@import 'news';
+@import 'shortcake';
