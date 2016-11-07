@@ -3,7 +3,18 @@ function filter( $query ) {
   if ( !is_admin() && $query->is_main_query()) {
     if ($query->is_search) {
 
+
+      /* These Variables are for the SELECT query test */
+      /*
+      $SELECTcat = '';
+      $SELECTauthor = '';
+      $SELECTsDate = '';
+      $SELECTeDate = '';
+      $SELECTkeyword = '';
+      */
+
       // Set Variables
+      /* Only get Author if Co-Author is installed */
       if ( function_exists( 'coauthors_posts_links' ) ){
         $termslug = $_POST['author'];
       };
@@ -11,8 +22,7 @@ function filter( $query ) {
       $start = $_POST['Sdate'];
       $end = $_POST['Edate'];
       $cat = $_POST['cat'];
-
-
+      /* Only get Files if Advanced Custom Fields is installed */
       if ( function_exists( 'get_field' ) ){
         $fileType = $_POST['fileType'];
       };
@@ -29,24 +39,15 @@ function filter( $query ) {
       // Search by Author
       if ( function_exists( 'coauthors_posts_links' ) ){ // Co-Author Installed
         if($termslug){
-          $query->set(
-            'tax_query',
-            array(
-              array(
-                'taxonomy' => 'author',
-                'field' => 'slug',
-                'terms' => $termslug,
-                'operator' => 'AND'
-              )
-            )
-          );
-
+          $query->set('author_name', $termslug);
+          //$SELECTauthor = $termslug;
         };
       };
 
       // Search by Category
       if($cat){
         $query->set( 'category_name', $cat);
+      //  $SELECTcat = $cat;
       };
 
       // Search by File Type
@@ -108,14 +109,38 @@ function filter( $query ) {
     };
   };
   return $query;
+
+
+/* This is a test of the SELECT query */
+/*
+global $wpdb;
+
+$querystr = "
+   SELECT $wpdb->posts.*
+   FROM $wpdb->posts, $wpdb->postmeta
+   WHERE $wpdb->posts.ID = $wpdb->postmeta.post_id
+   AND $wpdb->posts.category_name = 'highway-systems'
+   AND $wpdb->posts.author_name = 'cap-c-cunningham'
+   AND $wpdb->posts.post_status = 'publish'
+   AND $wpdb->posts.post_type = 'post'
+   AND $wpdb->posts.post_date < NOW()
+   ORDER BY $wpdb->posts.post_date DESC
+";
+
+$pageposts = $wpdb->get_results($querystr, OBJECT);
+
+return $pageposts;
+*/
 }; // End Function
 
-add_action( 'pre_get_posts', 'filter' );
+if ( function_exists( 'get_field' ) ){
+  add_action( 'pre_get_posts', 'filter' );
 
-// Replace SQL Query = with LIKE for Repeater Field
-function my_posts_where( $where ) {
-	$where = str_replace("meta_key = 'files_%", "meta_key LIKE 'files_%", $where);
-	return $where;
+  // Replace SQL Query = with LIKE for Repeater Field
+  function my_posts_where( $where ) {
+  	$where = str_replace("meta_key = 'files_%", "meta_key LIKE 'files_%", $where);
+  	return $where;
+  }
+
 }
-
  ?>

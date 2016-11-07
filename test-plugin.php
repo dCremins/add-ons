@@ -3,7 +3,7 @@
 Plugin Name: ITRE Add-Ons
 Plugin URI: http://itre.ncsu.edu
 Description: Custom widgets and functions for ITRE website use
-Version: 1.0
+Version: 1.1
 Author: Devin Cremins
 Author URI: http://octopusoddments.com
 */

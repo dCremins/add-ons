@@ -4,7 +4,7 @@ $include = [
   '/lib/breadcrumbs.php',  // Add NCSU Styled Breadcrumbs
   '/lib/shortcode.php',    // Shortcode
   '/lib/shortcake.php',    // Shortcake UI
-  '/lib/search.php',       // Search Function 
+  '/lib/search.php',       // Search Function
 ];
 
 foreach ($include as $file) {
@@ -15,5 +15,7 @@ foreach ($include as $file) {
   require_once $filepath;
 }
 unset($file, $filepath);
+
+
 
 ?>

@@ -36,6 +36,7 @@ class itre_search extends WP_Widget {
 		}
 		$category = get_categories();
 
+
     // Get File Type Options
     if (function_exists('the_field')){ // If ACF Installed
 
@@ -91,7 +92,7 @@ Then store the field object into our variable **/
       <!-- /Category -->
 
       <!-- File Type -->
-      <?php if (function_exists('the_field')){ ?>
+      <?php if (function_exists('the_field') && get_field('files')){ ?>
       <div class="input-group">
         <label for="fileType" class=""><?php _e( 'Select a Document Type: ', 'textdomain' ); ?></label><br>
         <select name="fileType" class="form-control">
