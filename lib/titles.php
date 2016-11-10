@@ -13,12 +13,12 @@ function searchTitle() {
   };
 
   if ($fileType && $search){
-    $title .= " for <span class='searchTerm'>" . $fileType . 's</span>';
-    $title .= " with <span class='searchTerm'>" . $search . '</span>';
+    $title .= " for <span class='search-term'>" . $fileType . 's</span>';
+    $title .= " with <span class='search-term'>" . $search . '</span>';
   } elseif ($search){
-    $title .= " for <span class='searchTerm'>" . $search . '</span>';
+    $title .= " for <span class='search-term'>" . $search . '</span>';
   } elseif ($fileType){
-    $title .= " for <span class='searchTerm'>" . $fileType . 's</span>';
+    $title .= " for <span class='search-term'>" . $fileType . 's</span>';
   }
 
   if ($termslug){
@@ -27,24 +27,24 @@ function searchTitle() {
       'name' => $termslug,
     );
     $author = get_posts($x);
-    $title .= " by <span class='searchTerm'>" . $author[0]->post_title . '</span>';
+    $title .= " by <span class='search-term'>" . $author[0]->post_title . '</span>';
   }
   if ($start || $end){
     if ($start && $end){
       $start = date("M jS Y", strtotime($start));
       $end = date("M jS Y", strtotime($end));
-      $title .= " between <span class='searchTerm'>" . $start . '</span>';
-      $title .= " and <span class='searchTerm'>" . $end . '</span>';
+      $title .= " between <span class='search-term'>" . $start . '</span>';
+      $title .= " and <span class='search-term'>" . $end . '</span>';
     }elseif ($start){
       $start = date("M jS Y", strtotime($start));
-      $title .= " after <span class='searchTerm'>" . $start . '</span>';
+      $title .= " after <span class='search-term'>" . $start . '</span>';
     }elseif ($end){
       $end = date("M jS Y", strtotime($end));
-      $title .= " before <span class='searchTerm'>" . $end . '</span>';
+      $title .= " before <span class='search-term'>" . $end . '</span>';
     }
   }
   if ($cat){
-    $title .= " in <span class='searchTerm'>" . get_category_by_slug($cat)->name . '</span>';
+    $title .= " in <span class='search-term'>" . get_category_by_slug($cat)->name . '</span>';
   }
   return $title;
 }

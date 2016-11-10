@@ -8,39 +8,49 @@ function breadcrumbs() {
     echo '<li><a href="'.esc_url(home_url()).'">Research</a></li>';
     if (is_search()) {
       echo '<li class="active">Search Results</li>';
+
     } elseif (is_category()) {
       echo '<li><a href="';
       echo get_permalink( get_option( 'page_for_posts' ) );
       echo '">'.get_the_title(get_option( 'page_for_posts' ));
       echo '</a></li>';
-
       echo '<li class="active">';
       $cat = get_category( get_query_var( 'cat' ) );
     	echo $cat->name;
       echo '</li>';
-    }elseif (is_single()) {
+
+    } elseif (is_single()) {
       echo '<li><a href="';
       echo get_permalink( get_option( 'page_for_posts' ) );
       echo '">'.get_the_title(get_option( 'page_for_posts' ));
       echo '</a></li>';
-
       echo '<li class="active">';
-    	the_title();
+      if (strlen(get_the_title()) > 40) {
+        echo substr(get_the_title(),0,40).'...';
+      } else {
+        the_title();
+      }
       echo '</li>';
+
     } elseif (is_author()) {
       echo '<li><a href="';
       echo get_permalink( get_option( 'page_for_posts' ) );
       echo '">'.get_the_title(get_option( 'page_for_posts' ));
       echo '</a></li>';
-
       echo '<li class="active">';
       $name = get_category(get_query_var( 'term' ));
       echo get_queried_object()->display_name;
       echo '</li>';
+
     } elseif (is_page()) {
       echo '<li class="active">';
-      the_title();
+      if (strlen(get_the_title()) > 40) {
+        echo substr(get_the_title(),0,40).'...';
+      } else {
+        the_title();
+      }
       echo '</li>';
+
     } elseif (is_home() && get_option('page_for_posts', true)) {
       echo '<li class="active">'.get_the_title(get_option('page_for_posts', true)).'</li>';
     }
