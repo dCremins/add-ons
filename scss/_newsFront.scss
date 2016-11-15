@@ -1,67 +1,74 @@
-article.layoutA {
-  float:left;
-  width:45%;
-  margin: 0 2% 10px;
-  overflow:hidden;
-  .newsImage {
-    width:230px;
-    height: 170px;
-    overflow: hidden;
-  }
-  &:first-of-type {
-    width:95%;
-    float:none;
-    .newsImage {
-      height:auto;
-      width:100%;
-    }
-  }
+.layout-a {
+  flex: 1;
+  padding: 0 20px 0 0;
 
+  &:first-of-type {
+    flex: 100%;
+  }
 }
-article.layoutB {
-  .newsImage {
-    width:95%;
+
+.layout-b {
+  .news-image {
     height: auto;
     overflow: hidden;
+    width: 95%;
   }
 }
-article.layoutC {
-  width:100%;
-  .newsImage {
-    float: left;
+
+.layout-c {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+
+  .news-image {
     margin-right: 20px;
   }
 
-}
-article.layoutD {
-  float:left;
-  width:45%;
-  margin: 0 2%;
-  overflow: hidden;
-  .newsImage {
-    width:230px;
-    height: 170px;
-    overflow: hidden;
-  }
-  .floatD {
-    float:left;
+  .flex-text {
+    flex: 2;
   }
 }
-article.newsFront {
+
+.layout-d {
+  flex: 1 45%;
+  padding: 0 20px 0 0;
+}
+
+.layout-e {
+  flex: 1;
+  padding: 0 20px 0 0;
+}
+
+.news-front {
+  margin: 0;
+
   h4 {
-    margin:0 0 10px;
-    font-size:16px;
+    font-size: 16px;
+    margin: 0 0 10px;
   }
+
   p {
-    font-size:14px;
+    font-size: 14px;
   }
+
   img {
     margin: 0;
+    width: 100%;
   }
-  .newsImage {
+
+  .news-image {
     margin-bottom: 10px;
   }
 }
-.itre_news {
+
+.itre-news {
   margin: 15px auto 0;
+
+  h3 {
+    width: 100%;
+  }
+
+  .flex {
+    display: flex;
+  }
 }

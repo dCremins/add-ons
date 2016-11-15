@@ -1,21 +1,25 @@
-div.radio {
-  display:inline-block;
-  width:50px;
+.radio {
+  display: inline-block;
   height: 70px;
+  width: 50px;
+
   label {
-    display:block;
-    text-align: center;
+    display: block;
     margin: 10px auto 0;
+    text-align: center;
+
     img {
       height: 30px;
     }
   }
+
   input {
     display: block;
-    text-align: center;
     margin: 10px auto 0;
+    text-align: center;
   }
 }
+
 .layout {
-  margin-bottom:20px;
+  margin-bottom: 20px;
 }

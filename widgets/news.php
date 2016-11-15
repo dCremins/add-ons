@@ -5,7 +5,7 @@ class itre_news extends WP_Widget {
 	// constructor
 	public function __construct(){
 		$widget_details = array(
-            'classname' => 'itre_news',
+            'classname' => 'itre-news',
             'description' => 'ITRE Recent Posts Widget'
         );
 
@@ -15,14 +15,11 @@ class itre_news extends WP_Widget {
 	// widget form creation
 	public function form($instance) {
 		// Backend Form
-    if ( isset( $instance[ 'title' ] ) ) {
-      $title = $instance[ 'title' ];
-    } else {
-      $title = 'New title';
-    }
     // Widget admin form
+		$title = ( isset( $instance['title'] ) ) ? $instance['title'] : 'New Title';
 		$gory = ( isset( $instance['gory'] ) ) ? $instance['gory'] : 'All';
 		$layout = ( isset( $instance['layout'] ) ) ? $instance['layout'] : 'A';
+		$feature = ( isset( $instance['feature'] ) ) ? $instance['feature'] : 'false';
     ?>
     <p>
       <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
@@ -66,7 +63,17 @@ class itre_news extends WP_Widget {
 				<label for="D"><span class="icon-four-layout"></span></label>
         <?php echo '<input type="radio" id="D" name="' . $this->get_field_name( 'layout' ) . '" value="D" ' . checked( $layout == 'D', true, false ) . '>'; ?>
       </div>
+
+		<div class="radio">
+			<label for="E"><span class="icon-three-layout"></span></label>
+			<?php echo '<input type="radio" id="E" name="' . $this->get_field_name( 'layout' ) . '" value="E" ' . checked( $layout == 'E', true, false ) . '>'; ?>
 		</div>
+	</div>
+
+	<p><?php
+		echo '<input type="checkbox" id="feature" name="' . $this->get_field_name( 'feature' ) . '" value="true" ' . checked( $feature == 'true', true, false) . '>';
+		echo '<label for="feature" class="">' .  _e( '  Show Featured Image?  ', 'textdomain' ) . '</label>'; ?>
+	</p>
 
 	<?php } //End Form
 
@@ -77,6 +84,7 @@ class itre_news extends WP_Widget {
     $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
     $instance['gory'] = ( isset( $new_instance['gory'] ) ) ? $new_instance['gory'] : 'All';
 		$instance['layout'] = ( isset( $new_instance['layout'] ) ) ? $new_instance['layout'] : 'A';
+		$instance['feature'] =  ( isset( $new_instance['feature'] ) ) ? $new_instance['feature'] : 'false';
     return $instance;
 	} //End Update
 
@@ -85,6 +93,7 @@ class itre_news extends WP_Widget {
     $title = apply_filters( 'widget_title', $instance['title'] );
 		$gory = $instance['gory'];
 		$layout = $instance['layout'];
+		$feature = ( isset( $instance['feature'] ) ) ? $instance['feature'] : 'false';
     // before and after widget arguments are defined by themes
     echo $args['before_widget'];
     if ( ! empty( $title ) ){
@@ -95,16 +104,19 @@ class itre_news extends WP_Widget {
 		if (! empty($layout)){
 			if ($layout == 'A') {
 				$number = 3;
-				$class = 'layoutA';
+				$class = 'layout-a';
 			} elseif ($layout == 'B') {
 				$number = 2;
-				$class = 'layoutB';
+				$class = 'layout-b';
 			} elseif ($layout == 'C') {
 				$number = 4;
-				$class = 'layoutC';
+				$class = 'layout-c';
 			} elseif ($layout == 'D') {
 				$number = 4;
-				$class = 'layoutD';
+				$class = 'layout-d';
+			} elseif ($layout == 'E') {
+				$number = 3;
+				$class = 'layout-e';
 			}
 		}
 		if ($gory == 'All') {$gory = '';}
@@ -118,25 +130,26 @@ class itre_news extends WP_Widget {
 		$the_query = new WP_Query( $stuff );
 
 		if ( $the_query->have_posts() ) :
+			echo '<div class="flex">';
 			while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-				<article class="newsFront <?php echo $class; ?>">
-					<?php if ( has_post_thumbnail() ) {
-						echo '<div class="newsImage">';
-						if ($class == 'layoutA' || $class == 'layoutD' ){
-							if( $the_query->current_post == 0 && !is_paged() && $class == 'layoutA' ) {
+				<article class="news-front <?php echo $class; ?>">
+					<?php if ( (has_post_thumbnail()) && ($feature === 'true')) {
+						echo '<div class="news-image">';
+						if ($class == 'layout-a' || $class == 'layout-d' ){
+							if( $the_query->current_post == 0 && !is_paged() && $class == 'layout-a' ) {
 					      the_post_thumbnail('single-post-thumbnail');
 							} else {
 								the_post_thumbnail('news-post-thumbnail');
 							}
-						} elseif ($class == 'layoutC') {
+						} elseif ($class == 'layout-c') {
 							the_post_thumbnail('author-post-thumbnail');
 						} else {
 							the_post_thumbnail('news-wide-post-thumbnail');
 						}
 						echo '</div>';
 			    }
-					if ($class == 'layoutC') {
-						echo '<div class="floatD">'; ?>
+					if ($class == 'layout-c') {
+						echo '<div class="flex-text">'; ?>
 						<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
 						<?php the_excerpt();
 						echo '</div>';
@@ -147,6 +160,7 @@ class itre_news extends WP_Widget {
 				</article>
 			<?php endwhile;
 			wp_reset_postdata();
+			echo '</div>';
 		endif;
 
     echo $args['after_widget'];

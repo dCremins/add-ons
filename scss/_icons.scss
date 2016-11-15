@@ -26,20 +26,24 @@
   text-transform: none;
 }
 
-.icon-inverse-trio::before {
-  content: '\e906';
+.icon-letter::before {
+  content: '\e90c';
 }
 
-.icon-inverse-four::before {
-  content: '\e907';
+.icon-inverse-letter::before {
+  content: '\e90e';
 }
 
-.icon-inverse-double::before {
-  content: '\e908';
+.icon-bike::before {
+  content: '\e904';
 }
 
-.icon-inverse-stacked::before {
-  content: '\e909';
+.icon-papers::before {
+  content: '\e905';
+}
+
+.icon-inverse-papers::before {
+  content: '\e90d';
 }
 
 .icon-stacked-layout::before {
@@ -58,14 +62,26 @@
   content: '\e903';
 }
 
-.icon-bike::before {
-  content: '\e904';
+.icon-inverse-trio::before {
+  content: '\e906';
 }
 
-.icon-letter::before {
-  content: '\e905';
+.icon-inverse-four::before {
+  content: '\e907';
 }
 
-.icon-papers::before {
-  content: '\1f54b';
+.icon-inverse-double::before {
+  content: '\e90a';
+}
+
+.icon-inverse-stacked::before {
+  content: '\e90b';
+}
+
+.icon-three-layout::before {
+  content: '\e908';
+}
+
+.icon-inverse-three::before {
+  content: '\e909';
 }
