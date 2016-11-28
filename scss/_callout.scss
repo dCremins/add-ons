@@ -16,12 +16,7 @@
 
 a:hover {
   .icon {
-    background-color: $white;
-    border: $red 5px solid;
-
-    span {
-      color: $red;
-    }
+    background-color: transparent;
   }
 }
 
@@ -30,7 +25,6 @@ a:hover {
   text-align: center;
 
   h3 {
-    color: $red;
     margin: 18px auto 8px;
   }
 

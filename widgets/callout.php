@@ -91,17 +91,16 @@ class itre_callout extends WP_Widget {
 		}
 
     if ( ! empty( $title ) ){
-    	echo $args['before_title'] . $title . $args['after_title'];
+    	echo '<h5>' . $title . '</h5>';
 		}
 
 		if ( ! empty( $text ) ){
-    	echo '<p><strong>'.$text.'</strong>';
+    	echo '<h6><strong>'.$text.'</strong></h6>';
 		}
 
 		if ( ! empty( $link ) && ! empty($linktext) ){
-    	echo '<br />'.$linktext.'  <span class="glyphicon glyphicon-bold-arrow"></span>';
+    	echo '<p>'.$linktext.'  <span class="glyphicon glyphicon-bold-arrow"></span></p>';
 		}
-		echo '</p>';
 
 		if (! empty( $link )) {
 			echo '</a>';

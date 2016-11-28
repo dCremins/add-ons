@@ -106,7 +106,7 @@ Then store the field object into our variable **/
       <!-- /File Type -->
 
       <!-- Start Date -->
-      <div class="input-group">
+      <div class="input-group date-search">
   		  <div class="dateSearch">
   		    <label for="startDate" class=""><?php _e( 'Search Between ', 'textdomain' ); ?></label><br>
   		    <input type="date" value="" name="Sdate" placeholder="Start">

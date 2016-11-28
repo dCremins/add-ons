@@ -97,7 +97,7 @@ class itre_news extends WP_Widget {
     // before and after widget arguments are defined by themes
     echo $args['before_widget'];
     if ( ! empty( $title ) ){
-    	echo $args['before_title'] . $title . $args['after_title'];
+    	echo '<h5>' . $title . '</h5>';
 		}
 		$number = 0;
 		$class = '';
@@ -150,11 +150,11 @@ class itre_news extends WP_Widget {
 			    }
 					if ($class == 'layout-c') {
 						echo '<div class="flex-text">'; ?>
-						<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+						<h6><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h6>
 						<?php the_excerpt();
 						echo '</div>';
 					} else { ?>
-						<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+						<h6><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h6>
 						<?php the_excerpt();
 					} ?>
 				</article>

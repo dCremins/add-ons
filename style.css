@@ -82,30 +82,38 @@
 }
 
 form.search-form .divider {
-  padding-top: 32px;
-  float: left;
-  width: 10%;
+  flex: 1;
+  padding-top: 20px;
   text-align: center;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1200px) {
   form.search-form .divider {
-    float: none;
-    padding: 5px 0;
-    margin-bottom: -22px;
-    width: 100%;
+    flex: 100%;
+    padding: 15px 0 0;
+  }
+}
+
+@media (max-width: 768px) {
+  form.search-form .divider {
+    flex: 1;
+    padding: 20px 0 0;
   }
 }
 
 form.search-form .dateSearch {
-  width: 45%;
-  float: left;
+  flex: 2;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1200px) {
   form.search-form .dateSearch {
-    width: 100%;
-    float: none;
+    flex: 100%;
+  }
+}
+
+@media (max-width: 1200px) {
+  form.search-form .dateSearch {
+    flex: 2;
   }
 }
 
@@ -135,6 +143,16 @@ form.search-form .input-group select.form-control {
 form.search-form .input-group span.input-group-btn {
   width: 23%;
   border-radius: 0;
+}
+
+form.search-form .input-group.date-search {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+form.search-form .input-group.date-search input {
+  padding: 0 0 0 10px;
 }
 
 form.search-form button {
@@ -231,12 +249,7 @@ form.search-form button {
 }
 
 a:hover .icon {
-  background-color: #fff;
-  border: #c00 5px solid;
-}
-
-a:hover .icon span {
-  color: #c00;
+  background-color: transparent;
 }
 
 .itre-callout {
@@ -245,7 +258,6 @@ a:hover .icon span {
 }
 
 .itre-callout h3 {
-  color: #c00;
   margin: 18px auto 8px;
 }
 
