@@ -133,6 +133,7 @@ class itre_news extends WP_Widget {
 			echo '<div class="flex">';
 			while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
 				<article class="news-front <?php echo $class; ?>">
+					<a class="more" href="<?php the_permalink() ?>">
 					<?php if ( (has_post_thumbnail()) && ($feature === 'true')) {
 						echo '<div class="news-image">';
 						if ($class == 'layout-a' || $class == 'layout-d' ){
@@ -150,13 +151,14 @@ class itre_news extends WP_Widget {
 			    }
 					if ($class == 'layout-c') {
 						echo '<div class="flex-text">'; ?>
-						<h6><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h6>
-						<?php the_excerpt();
+						<h6><?php echo get_the_title(); ?></h6>
+						<p><?php echo get_the_excerpt(); echo '</p>';
 						echo '</div>';
 					} else { ?>
-						<h6><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h6>
-						<?php the_excerpt();
+						<h6><?php echo get_the_title(); ?></h6>
+						<p><?php echo get_the_excerpt(); echo '</p>';
 					} ?>
+				</a>
 				</article>
 			<?php endwhile;
 			wp_reset_postdata();

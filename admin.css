@@ -81,26 +81,26 @@
   content: '\e909';
 }
 
-div.radio {
+.radio {
   display: inline-block;
-  width: 50px;
   height: 70px;
+  width: 50px;
 }
 
-div.radio label {
+.radio label {
   display: block;
-  text-align: center;
   margin: 10px auto 0;
+  text-align: center;
 }
 
-div.radio label img {
+.radio label img {
   height: 30px;
 }
 
-div.radio input {
+.radio input {
   display: block;
-  text-align: center;
   margin: 10px auto 0;
+  text-align: center;
 }
 
 .layout {

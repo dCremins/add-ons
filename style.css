@@ -168,6 +168,12 @@ form.search-form button {
   flex: 100%;
 }
 
+@media (max-width: 768px) {
+  .layout-a {
+    flex: 100%;
+  }
+}
+
 .layout-b .news-image {
   height: auto;
   overflow: hidden;
@@ -193,13 +199,25 @@ form.search-form button {
   padding: 0 20px 0 0;
 }
 
+@media (max-width: 768px) {
+  .layout-d {
+    flex: 100%;
+  }
+}
+
 .layout-e {
   flex: 1;
   padding: 0 20px 0 0;
 }
 
+@media (max-width: 768px) {
+  .layout-e {
+    flex: 100%;
+  }
+}
+
 .news-front {
-  margin: 0;
+  margin: 10px 0 20px;
 }
 
 .news-front h4 {
@@ -243,13 +261,8 @@ form.search-form button {
 }
 
 .icon span {
-  color: #fff;
   font-size: 50px;
   margin: auto;
-}
-
-a:hover .icon {
-  background-color: transparent;
 }
 
 .itre-callout {

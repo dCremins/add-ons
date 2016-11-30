@@ -5,6 +5,10 @@
   &:first-of-type {
     flex: 100%;
   }
+
+  @media (max-width: 768px) {
+    flex: 100%;
+  }
 }
 
 .layout-b {
@@ -32,15 +36,23 @@
 .layout-d {
   flex: 1 45%;
   padding: 0 20px 0 0;
+
+  @media (max-width: 768px) {
+    flex: 100%;
+  }
 }
 
 .layout-e {
   flex: 1;
   padding: 0 20px 0 0;
+
+  @media (max-width: 768px) {
+    flex: 100%;
+  }
 }
 
 .news-front {
-  margin: 0;
+  margin: 10px 0 20px;
 
   h4 {
     font-size: 16px;

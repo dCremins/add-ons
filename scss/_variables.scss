@@ -14,3 +14,10 @@ $yellow:         	#fde148;
 $green:         	#a4b53a;
 $blue:         	  #47869c;
 $indigo:          #4156a1;
+
+$main:          #333 !default;
+$background:    #fff !default;
+$accent:        #333 !default;
+$pull:          darken($background, 10%) !default;
+$darken:        darken($main, 15%) !default;
+$text:          #000 !default;

@@ -81,9 +81,6 @@ class itre_callout extends WP_Widget {
 
 		// before and after widget arguments are defined by themes
     echo $args['before_widget'];
-		if (! empty( $link )) {
-			echo '<a class="more" href="'.$link.'">';
-		}
 
 		if ($icon != 'none') {
 
@@ -99,11 +96,7 @@ class itre_callout extends WP_Widget {
 		}
 
 		if ( ! empty( $link ) && ! empty($linktext) ){
-    	echo '<p>'.$linktext.'  <span class="glyphicon glyphicon-bold-arrow"></span></p>';
-		}
-
-		if (! empty( $link )) {
-			echo '</a>';
+    	echo '<p><a class="more" href="'.$link.'">'.$linktext.'  <span class="glyphicon glyphicon-bold-arrow"></span></a></p>';
 		}
 		echo $args['after_widget'];
 	} //widget end
