@@ -1,13 +1,13 @@
 <?php
 /*
 Plugin Name: ITRE Add-Ons
-Plugin URI: http://itre.ncsu.edu
+GitHub Plugin URI: https://github.ncsu.edu/drcremin/itre-plugin
+GitHub Branch:      master
+GitHub Enterprise: https://github.ncsu.edu
 Description: Custom widgets and functions for ITRE website use
 Version: 1.4
 Author: Devin Cremins
 Author URI: http://octopusoddments.com
-GitHub Enterprise: https://github.ncsu.edu
-GitHub Plugin URI: https://github.ncsu.edu/drcremin/itre-plugin
 */
 
 require_once( dirname( __FILE__ ) . '/functions.php' );
