@@ -13,7 +13,7 @@
 
 .layout-b {
   .news-image {
-    height: auto;
+    max-height: 350px;
     overflow: hidden;
     width: 95%;
   }
@@ -64,6 +64,7 @@
   }
 
   img {
+    height: auto;
     margin: 0;
     width: 100%;
   }

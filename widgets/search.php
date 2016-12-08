@@ -5,11 +5,11 @@ class itre_search extends WP_Widget {
 	// constructor
 	public function __construct(){
 		$widget_details = array(
-            'classname' => 'itre_search',
-            'description' => 'Custom Research Search Widget'
-        );
+        'classname' => 'itre_search',
+        'description' => 'Custom Research Search Widget'
+    );
 
-        parent::__construct( 'itre_search', 'Search Research', $widget_details );
+    parent::__construct( 'itre_search', 'Search Research', $widget_details );
 	}
 
 	// widget form creation
@@ -38,7 +38,7 @@ class itre_search extends WP_Widget {
 
 
     // Get File Type Options
-    if (function_exists('the_field')){ // If ACF Installed
+    if (class_exists('acf')){ // If ACF Installed
 
 /** Dynamically get the Post ID of the first post **/
       $sql = $wpdb->prepare( "select post_id from " . $wpdb->prefix . "postmeta where meta_key = %s limit 0,1 ", 'files');
@@ -61,7 +61,7 @@ Then store the field object into our variable **/
       <!-- Keyword -->
 		  <div class="input-group">
 		    <label class="hidden" for="s"><?php _e('Keyword:'); ?></label>
-		    <input type="search" value="<?php //the_search_query(); ?>" placeholder="Keyword" class="form-control" name="s">
+		    <input type="search" value="<?php //the_search_query(); ?>" placeholder="Keyword" class="form-control" id="s">
 		  </div>
       <!-- /Keyword -->
 
@@ -69,11 +69,13 @@ Then store the field object into our variable **/
 		<?php if ( function_exists( 'coauthors_posts_links' ) ) {?>
 		  <div class="input-group">
 		    <label for="<?php echo $tax; ?>" class=""><?php _e( 'Select an Author: ', 'textdomain' ); ?></label><br>
-		    <select name="<?php echo $tax; ?>" class="form-control">
-		      <option value="">All Authors</option>
-		      <?php foreach( $guest_authors as $ga ){?>
-		        <option value="<?php echo $ga->post_name; ?>"><?php echo $ga->post_title; ?></option>
-		      <?php }; ?>
+		    <select id="<?php echo $tax; ?>" class="form-control">
+					<optgroup label="Authors">
+			      <option selected value="">All Authors</option>
+			      <?php foreach( $guest_authors as $ga ){?>
+			        <option value="<?php echo $ga->post_name; ?>"><?php echo $ga->post_title; ?></option>
+			      <?php }; ?>
+					</optgroup>
 		    </select>
 		  </div>
 			<?php }?>
@@ -82,11 +84,13 @@ Then store the field object into our variable **/
       <!-- Category -->
 		  <div class="input-group">
 		    <label for="cat" class=""><?php _e( 'Select a Category: ', 'textdomain' ); ?></label><br>
-		    <select name="cat" class="form-control">
-		      <option value="">All Categories</option>
-		      <?php foreach( $category as $cats ){?>
-		        <option value="<?php echo $cats->slug?>"><?php echo $cats->name; ?></option>
-		      <?php }; ?>
+		    <select id="cat" class="form-control">
+					<optgroup label="Categories">
+			      <option selected value="">All Categories</option>
+			      <?php foreach( $category as $cats ){?>
+			        <option value="<?php echo $cats->slug?>"><?php echo $cats->name; ?></option>
+			      <?php }; ?>
+					</optgroup>
 		    </select>
 		  </div>
       <!-- /Category -->
@@ -95,7 +99,7 @@ Then store the field object into our variable **/
       <?php if (function_exists('the_field') && get_field('files')){ ?>
       <div class="input-group">
         <label for="fileType" class=""><?php _e( 'Select a Document Type: ', 'textdomain' ); ?></label><br>
-        <select name="fileType" class="form-control">
+        <select id="fileType" class="form-control">
           <option value="">All Types</option>
           <?php foreach( $fileType['choices'] as $k => $v ){?>
             <option value="<?php echo $k?>"><?php echo $v; ?></option>
@@ -109,7 +113,7 @@ Then store the field object into our variable **/
       <div class="input-group date-search">
   		  <div class="dateSearch">
   		    <label for="startDate" class=""><?php _e( 'Search Between ', 'textdomain' ); ?></label><br>
-  		    <input type="date" value="" name="Sdate" placeholder="Start">
+  		    <input type="date" value="" id="startDate" placeholder="Start">
   		  </div>
         <!-- /Start Date -->
 
@@ -118,7 +122,7 @@ Then store the field object into our variable **/
         <!-- End Date -->
   		  <div class="dateSearch">
   		    <label for="endDate" class=""><?php _e( '  ', 'textdomain' ); ?></label><br>
-  		    <input type="date" value="" name="Edate">
+  		    <input type="date" value="" id="endDate">
   		  </div><!-- /input-group -->
   			<div style="clear:both;"></div>
       </div>

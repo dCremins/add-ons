@@ -1,0 +1,30 @@
+.calendar-widget {
+  clear: both;
+
+  .calendar-events {
+    padding: 0;
+  }
+
+  .event {
+    display: flex;
+    margin-bottom: 45px;
+    overflow: auto;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  .event-date {
+    float: left;
+    height: 90px;
+    margin: 5px 15px 0 0;
+    min-width: 90px;
+    padding: 20px 0;
+    text-align: center;
+  }
+
+  .event-content {
+    float: left;
+  }
+}

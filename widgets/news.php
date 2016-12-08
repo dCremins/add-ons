@@ -17,6 +17,7 @@ class itre_news extends WP_Widget {
 		// Backend Form
     // Widget admin form
 		$title = ( isset( $instance['title'] ) ) ? $instance['title'] : 'New Title';
+		$link  = isset( $instance['link'] ) ? esc_attr( $instance['link'] ) : '';
 		$gory = ( isset( $instance['gory'] ) ) ? $instance['gory'] : 'All';
 		$layout = ( isset( $instance['layout'] ) ) ? $instance['layout'] : 'A';
 		$feature = ( isset( $instance['feature'] ) ) ? $instance['feature'] : 'false';
@@ -25,6 +26,11 @@ class itre_news extends WP_Widget {
       <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
       <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
     </p>
+
+		<p>
+			<label for="<?php echo $this->get_field_id( 'link' ); ?>"><?php _e( 'Link:' ); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'link' ); ?>" name="<?php echo $this->get_field_name( 'link' ); ?>" type="text" value="<?php echo esc_attr( $link ); ?>" />
+		</p>
 
 		<!-- Category -->
 		<?php $category = get_categories();?>
@@ -82,7 +88,8 @@ class itre_news extends WP_Widget {
 	public function update($new_instance, $old_instance) {
     $instance = array();
     $instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
-    $instance['gory'] = ( isset( $new_instance['gory'] ) ) ? $new_instance['gory'] : 'All';
+		$instance['link']  = ( ! empty( $new_instance['link'] ) ) ? sanitize_text_field( $new_instance['link'] ) : '';
+		$instance['gory'] = ( isset( $new_instance['gory'] ) ) ? $new_instance['gory'] : 'All';
 		$instance['layout'] = ( isset( $new_instance['layout'] ) ) ? $new_instance['layout'] : 'A';
 		$instance['feature'] =  ( isset( $new_instance['feature'] ) ) ? $new_instance['feature'] : 'false';
     return $instance;
@@ -91,13 +98,22 @@ class itre_news extends WP_Widget {
 	// widget display
 	public function widget($args, $instance) {
     $title = apply_filters( 'widget_title', $instance['title'] );
+		$link = ( ! empty( $instance['link'] ) ) ? $instance['link'] : '';
 		$gory = $instance['gory'];
 		$layout = $instance['layout'];
 		$feature = ( isset( $instance['feature'] ) ) ? $instance['feature'] : 'false';
     // before and after widget arguments are defined by themes
     echo $args['before_widget'];
     if ( ! empty( $title ) ){
-    	echo '<h5>' . $title . '</h5>';
+			echo $args['before_title'];
+				if ($link) {
+					echo '<a href="'.$link.'">';
+				}
+				echo $title;
+				if ($link) {
+					echo '</a>';
+				}
+			echo $args['after_title'];
 		}
 		$number = 0;
 		$class = '';
@@ -155,7 +171,7 @@ class itre_news extends WP_Widget {
 						<p><?php echo get_the_excerpt(); echo '</p>';
 						echo '</div>';
 					} else { ?>
-						<h6><?php echo get_the_title(); ?></h6>
+						<h5><?php echo get_the_title(); ?></h5>
 						<p><?php echo get_the_excerpt(); echo '</p>';
 					} ?>
 				</a>

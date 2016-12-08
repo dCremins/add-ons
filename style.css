@@ -8,7 +8,6 @@
 
 [class^='icon-'],
 [class*=' icon-'] {
-  color: #a6a6a6;
   font-family: 'icomoon';
   font-size: 30px;
   -moz-osx-font-smoothing: grayscale;
@@ -83,7 +82,7 @@
 
 form.search-form .divider {
   flex: 1;
-  padding-top: 20px;
+  padding: 20px 10px 0;
   text-align: center;
 }
 
@@ -146,9 +145,20 @@ form.search-form .input-group span.input-group-btn {
 }
 
 form.search-form .input-group.date-search {
-  display: flex;
-  flex-flow: row wrap;
   align-items: center;
+  display: flex;
+}
+
+@media (max-width: 1200px) {
+  form.search-form .input-group.date-search {
+    flex-flow: row wrap;
+  }
+}
+
+@media (max-width: 1200px) {
+  form.search-form .input-group.date-search {
+    flex-flow: none;
+  }
 }
 
 form.search-form .input-group.date-search input {
@@ -175,7 +185,7 @@ form.search-form button {
 }
 
 .layout-b .news-image {
-  height: auto;
+  max-height: 350px;
   overflow: hidden;
   width: 95%;
 }
@@ -230,6 +240,7 @@ form.search-form button {
 }
 
 .news-front img {
+  height: auto;
   margin: 0;
   width: 100%;
 }
@@ -251,8 +262,6 @@ form.search-form button {
 }
 
 .icon {
-  background-color: #c00;
-  border: #c00 5px solid;
   border-radius: 50px;
   display: flex;
   height: 90px;
@@ -276,4 +285,35 @@ form.search-form button {
 
 .itre-callout p {
   margin: 0;
+}
+
+.calendar-widget {
+  clear: both;
+}
+
+.calendar-widget .calendar-events {
+  padding: 0;
+}
+
+.calendar-widget .event {
+  display: flex;
+  margin-bottom: 45px;
+  overflow: auto;
+}
+
+.calendar-widget .event::before {
+  display: none;
+}
+
+.calendar-widget .event-date {
+  float: left;
+  height: 90px;
+  margin: 5px 15px 0 0;
+  min-width: 90px;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.calendar-widget .event-content {
+  float: left;
 }

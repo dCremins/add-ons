@@ -6,7 +6,9 @@ class itre_callout extends WP_Widget {
 	public function __construct(){
 		$widget_details = array(
             'classname' => 'itre-callout',
-            'description' => 'ITRE Callout Widget'
+            'description' => 'ITRE Callout Widget',
+				    'before_title'  => '<h4>',
+				    'after_title'   => '</h4>'
         );
 
         parent::__construct( 'itre_callout', 'ITRE Callout', $widget_details );
@@ -84,7 +86,7 @@ class itre_callout extends WP_Widget {
 
 		if ($icon != 'none') {
 
-			echo '<div class="icon"><span class="icon-'.$icon.'"></span></div>';
+			echo '<div class="icon"><span class="icon-'.$icon.'" aria-hidden="true"></span></div>';
 		}
 
     if ( ! empty( $title ) ){

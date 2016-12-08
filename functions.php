@@ -11,6 +11,12 @@ $include = [
   '/widgets/search.php',   // Advanced Research Search Widget
 ];
 
+if (class_exists('\SimpleCalendar\Widgets\Calendar')) {
+  $include[] = '/widgets/calendar/functions.php';
+  $include[] = '/widgets/calendar/calendar.php';
+}
+
+
 foreach ($include as $file) {
   if (!$filepath = (dirname( __FILE__ ) .$file)) {
     trigger_error(sprintf('Error locating %s for inclusion', $file), E_USER_ERROR);

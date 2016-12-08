@@ -1,7 +1,7 @@
  form.search-form {
   .divider {
     flex: 1;
-    padding-top: 20px;
+    padding: 20px 10px 0;
     text-align: center;
 
     @media (max-width: 1200px) {
@@ -14,6 +14,7 @@
       padding: 20px 0 0;
     }
   }
+
   .dateSearch{
     flex: 2;
 
@@ -35,6 +36,7 @@
       }
     }
   }
+
   .input-group {
     width:100%;
     select.form-control {
@@ -47,14 +49,21 @@
       //border-radius:0;
     }
     span.input-group-btn {
-      width:23%;
-      border-radius:0;
+      width: 23%;
+      border-radius: 0;
     }
 
     &.date-search {
-      display: flex;
-      flex-flow: row wrap;
       align-items: center;
+      display: flex;
+
+      @media (max-width: 1200px) {
+        flex-flow: row wrap;
+      }
+
+      @media (max-width: 1200px) {
+        flex-flow: none;
+      }
 
       input {
         padding: 0 0 0 10px;
