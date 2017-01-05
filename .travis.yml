@@ -25,4 +25,4 @@ before_script:
 script:
   - cd wp-tests/spec && bundle exec rspec test.rb
 
-after_success: npm run-script deploy
+after_success: ./deploy.sh
