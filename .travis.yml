@@ -26,5 +26,5 @@ script:
   - cd wp-tests/spec && bundle exec rspec test.rb
 
 after_success:
-  - chmod +x ./deploy.sh
+  - sudo chmod +x ./deploy.sh
   - ./deploy.sh
