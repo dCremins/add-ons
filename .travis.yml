@@ -26,5 +26,4 @@ script:
   - cd wp-tests/spec && bundle exec rspec test.rb
 
 after_success:
-  - cd ..
-  - ./deploy.sh
+  - bash deploy.sh
