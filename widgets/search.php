@@ -58,6 +58,7 @@ Then store the field object into our variable **/
 
 		  <h3><?php _e( 'Advanced Search', 'textdomain' ); ?></h3>
 
+			<input type="hidden" name="search" value="advanced">
       <!-- Keyword -->
 		  <div class="input-group">
 		    <label class="hidden" for="s"><?php _e('Keyword:'); ?></label>

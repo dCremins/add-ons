@@ -8,16 +8,16 @@ function searchTitle() {
   $start = $_POST['Sdate'];
   $end = $_POST['Edate'];
   $cat = $_POST['cat'];
-  if ( function_exists( 'get_field' ) ){
+  if ( isset($_POST['fileType']) ){
     $fileType = $_POST['fileType'];
   };
 
-  if ($fileType && $search){
+  if (isset($fileType) && $search){
     $title .= " for <span class='search-term'>" . $fileType . 's</span>';
     $title .= " with <span class='search-term'>" . $search . '</span>';
   } elseif ($search){
     $title .= " for <span class='search-term'>" . $search . '</span>';
-  } elseif ($fileType){
+  } elseif (isset($fileType)){
     $title .= " for <span class='search-term'>" . $fileType . 's</span>';
   }
 
