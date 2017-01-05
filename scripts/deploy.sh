@@ -1,8 +1,10 @@
-#!/usr/bin/env bash
+if [ "$TRAVIS_BRANCH" != "development" ]; then 
+    exit 0;
+fi
 
-eval "$(ssh-agent -s)" #start the ssh agent
-echo "$DEPLOY_KEY" > deploy_key.pem
-chmod 600 deploy_key.pem # this key should have push access
-ssh-add deploy_key.pem
-git remote add deploy $REPO_URI
-git push deploy master
+export GIT_COMMITTER_EMAIL=...
+export GIT_COMMITTER_NAME=...
+
+git checkout master || exit
+git merge "$TRAVIS_COMMIT" || exit
+git push ... # here need some authorization and url
