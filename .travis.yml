@@ -26,7 +26,7 @@ after_success: |
   if [ "$TRAVIS_BRANCH" == "development" ]; then
     cd "$TRAVIS_BUILD_DIR"
     # This generates a `web` directory containing the website.
-    git close development https://${DEPLOY_KEY}@github.com/dCremins/add-ons
+    git clone development https://${DEPLOY_KEY}@github.com/dCremins/add-ons
     cd add-ons
     git add .
     git -c user.name='travis' -c user.email='travis' commit -m init
