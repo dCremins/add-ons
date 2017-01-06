@@ -32,6 +32,6 @@ after_success: |
     git add .
     git -c user.name='travis' -c user.email='travis' commit -m init
     git commit "$TRAVIS_COMMIT"
-    git push -f -q https://${DEPLOY_KEY}@github.com/dCremins/add-ons.git development:master &2>/dev/null
+    git push git push origin head:master
     cd "$TRAVIS_BUILD_DIR"
   fi
