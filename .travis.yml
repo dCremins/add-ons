@@ -25,18 +25,18 @@ before_script:
 script:
   - cd wp-tests/spec && bundle exec rspec test.rb
 
-after_success:
-  - if [ "$TRAVIS_BRANCH" == "development" ]; then
-     cd "$TRAVIS_BUILD_DIR"
-    # This generates a `web` directory containing the website.
-    make web
-    cd web
-    git init
-    git checkout -b master
-    git add .
-    git -c user.name='travis' -c user.email='travis' commit -m init
-    # Make sure to make the output quiet, or else the API token will leak!
-    # This works because the API key can replace your password.
-    git push -f -q https://$DEPLOY_KEY@github.com/dCremins/add-ons master &2>/dev/null
-    cd "$TRAVIS_BUILD_DIR"
+after_success: |
+  if [ "$TRAVIS_BRANCH" == "development" ]; then
+ cd "$TRAVIS_BUILD_DIR"
+# This generates a `web` directory containing the website.
+  make web
+  cd web
+  git init
+  git checkout -b master
+  git add .
+  git -c user.name='travis' -c user.email='travis' commit -m init
+  # Make sure to make the output quiet, or else the API token will leak!
+  # This works because the API key can replace your password.
+  git push -f -q https://$DEPLOY_KEY@github.com/dCremins/add-ons master &2>/dev/null
+  cd "$TRAVIS_BUILD_DIR"
   fi
