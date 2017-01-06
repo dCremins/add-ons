@@ -6,10 +6,7 @@ notifications:
   on_failure: change
 
 php:
-  - nightly # PHP 7.0
   - 5.6
-  - 5.5
-  - 5.4
 
 env:
   - WP_PROJECT_TYPE=plugin WP_VERSION=latest WP_MULTISITE=0 WP_TEST_URL=http://localhost:12000 WP_TEST_USER=test WP_TEST_USER_PASS=test
@@ -29,10 +26,11 @@ after_success: |
   if [ "$TRAVIS_BRANCH" == "development" ]; then
     cd "$TRAVIS_BUILD_DIR"
     # This generates a `web` directory containing the website.
-    git fetch origin
-    git checkout master
+    git close development https://${DEPLOY_KEY}@github.com/dCremins/add-ons
+    cd add-ons
+    git add .
     git -c user.name='travis' -c user.email='travis' commit -m init
-    git merge "$TRAVIS_COMMIT"
+    git commit "$TRAVIS_COMMIT"
     git push -f -q https://${DEPLOY_KEY}@github.com/dCremins/add-ons.git development:master &2>/dev/null
     cd "$TRAVIS_BUILD_DIR"
   fi
