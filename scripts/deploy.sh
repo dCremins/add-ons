@@ -1,20 +1,12 @@
 #!/bin/bash
 
-set -o errexit
+if [ "$TRAVIS_BRANCH" != "test" ]; then
+    exit 0;
+fi
 
-rm -rf public
-mkdir public
+export GIT_COMMITTER_EMAIL= "devincrem@gmail.com"
+export GIT_COMMITTER_NAME= "Travis CI"
 
-# config
-git config --global user.email "devincrem@gmail.com"
-git config --global user.name "Travis CI"
-
-# build (CHANGE THIS)
-make
-
-# deploy
-cd public
-git init
-git add .
-git commit -m "Deploy to Github Pages"
-git push --force --quiet "https://${DEPLOY_KEY}@$github.com/dCremins/add-ons.git" development:master > /dev/null 2>&1
+git checkout master || exit
+git merge "$TRAVIS_COMMIT" || exit
+git push "https://${DEPLOY_KEY}@$github.com/dCremins/add-ons.git" development:master
