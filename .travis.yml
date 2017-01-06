@@ -21,10 +21,10 @@ matrix:
 before_script:
   - git clone https://github.com/Seravo/wordpress-test-template wp-tests
   - bash wp-tests/bin/install-wp-tests.sh test root '' localhost $WP_VERSION
+  - chmod ugo+x deploy.sh
 
 script:
   - cd wp-tests/spec && bundle exec rspec test.rb
 
 after_success:
-  - chmod +x ~/deploy.sh
   - ./deploy.sh
