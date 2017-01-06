@@ -29,9 +29,10 @@ after_success: |
   if [ "$TRAVIS_BRANCH" == "development" ]; then
     cd "$TRAVIS_BUILD_DIR"
     # This generates a `web` directory containing the website.
+    git fetch origin
     git checkout master
     git -c user.name='travis' -c user.email='travis' commit -m init
     git merge "$TRAVIS_COMMIT"
-    git push -f -q https://${DEPLOY_KEY}@$github.com/dCremins/add-ons.git development:master &2>/dev/null
+    git push -f -q https://${DEPLOY_KEY}@github.com/dCremins/add-ons.git development:master &2>/dev/null
     cd "$TRAVIS_BUILD_DIR"
   fi
