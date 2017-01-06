@@ -26,12 +26,8 @@ script:
   - cd wp-tests/spec && bundle exec rspec test.rb
 
 after_success:
-  - if [ "$TRAVIS_BRANCH" == "development" ]; then
-  - echo -e "Generating Master...\n"
-  - cd $HOME
-  - git config --global user.email "travis@travis-ci.org"
-  - git config --global user.name "Travis CI"
-  - git checkout master || exit
-  - git merge "$TRAVIS_COMMIT" || exit
-  - git push "https://${DEPLOY_KEY}@$github.com/dCremins/add-ons.git" development:master
-  - fi
+  - eval "$(ssh-agent -s)" #start the ssh agent
+  - chmod 600 .travis/deploy_key.pem # this key should have push access
+  - ssh-add .travis/deploy_key.pem
+  - git remote add deploy https://github.com/dCremins/add-ons.git
+  - git push deploy master
