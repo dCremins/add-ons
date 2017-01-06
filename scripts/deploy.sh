@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ "$TRAVIS_BRANCH" != "test" ]; then
+if [ "$TRAVIS_BRANCH" != "development" ]; then
     exit 0;
 fi
 
