@@ -30,7 +30,8 @@ after_success: |
     cd repo_clone
     git checkout development
     git add .
-    git -c user.name='travis' -c user.email='travis'
-    git push git push origin head:master
+    git -c user.name='travis'
+    git -c user.email='travis'
+    git push origin head:master
     cd "$TRAVIS_BUILD_DIR"
   fi
