@@ -28,6 +28,7 @@ after_success: |
     # This generates a `web` directory containing the website.
     git clone https://${DEPLOY_KEY}@github.com/dCremins/add-ons repo_clone
     cd repo_clone
+    git checkout development
     git add .
     git -c user.name='travis' -c user.email='travis' commit -m init
     git commit "$TRAVIS_COMMIT"
