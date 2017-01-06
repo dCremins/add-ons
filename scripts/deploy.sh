@@ -1,29 +1,20 @@
-#!/usr/bin/env ruby
+#!/bin/bash
 
-# HOWTO:
-# copy this file to script/travis-deploy
-# chmod +x script/travis-deploy
-# add the following to your .travis.yml
-# after_success:
-#  - "script/travis-deploy"
+set -o errexit
 
+rm -rf public
+mkdir public
 
-exit if ENV["TRAVIS_DEPLOY_PUSHED"]
+# config
+git config --global user.email "devincrem@gmail.com"
+git config --global user.name "Travis CI"
 
-# set defaults
-ENV["TRAVIS_DEPLOY_SOURCE_BRANCH"] ||= "development"
-ENV["TRAVIS_DEPLOY_TARGET_BRANCH"] ||= "master"
+# build (CHANGE THIS)
+make
 
-# make sure we only deploy the correct branch
-if ENV["TRAVIS_BRANCH"] != ENV["TRAVIS_DEPLOY_SOURCE_BRANCH"] || ENV["TRAVIS_PULL_REQUEST"] != "false"
-  puts "no deployment for:  #{ENV["TRAVIS_BRANCH"]} pull request: #{ENV["TRAVIS_PULL_REQUEST"]} job number: #{ENV["TRAVIS_JOB_NUMBER"]}"
-  exit(true)
-end
-
-# push from the source branch to the master branch
-puts "pushing from #{ENV["TRAVIS_DEPLOY_SOURCE_BRANCH"]} to #{ENV["TRAVIS_DEPLOY_TARGET_BRANCH"]}"
-`git config user.name Choco`
-`git checkout #{ENV["TRAVIS_DEPLOY_SOURCE_BRANCH"]}`
-`git push origin #{ENV["TRAVIS_DEPLOY_SOURCE_BRANCH"]}:#{ENV["TRAVIS_DEPLOY_TARGET_BRANCH"]}`
-puts "DONE, have a great day!"
-ENV["TRAVIS_DEPLOY_PUSHED"] = "true"
+# deploy
+cd public
+git init
+git add .
+git commit -m "Deploy to Github Pages"
+git push --force --quiet "https://${DEPLOY_KEY}@$github.com/dCremins/add-ons.git" development:master > /dev/null 2>&1
