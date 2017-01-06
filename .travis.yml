@@ -21,7 +21,7 @@ matrix:
 before_script:
   - git clone https://github.com/Seravo/wordpress-test-template wp-tests
   - bash wp-tests/bin/install-wp-tests.sh test root '' localhost $WP_VERSION
-  - chmod ugo+x test.sh
+  - chmod ugo+x scripts/test.sh
 
 script:
   - cd wp-tests/spec && bundle exec rspec test.rb
