@@ -25,8 +25,13 @@ before_script:
 script:
   - cd wp-tests/spec && bundle exec rspec test.rb
 
-deploy:
-  provider: script
-  script: scripts/deploy.sh
-  on:
-    branch: development
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "development" ]; then
+  - echo -e "Generating Master...\n"
+  - cd $HOME
+  - git config --global user.email "travis@travis-ci.org"
+  - git config --global user.name "Travis CI"
+  - git checkout master || exit
+  - git merge "$TRAVIS_COMMIT" || exit
+  - git push "https://${DEPLOY_KEY}@$github.com/dCremins/add-ons.git" development:master
+  - fi
