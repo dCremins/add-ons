@@ -24,14 +24,14 @@ script:
 
 after_success: |
   if [ "$TRAVIS_BRANCH" == "development" ]; then
-    cd "$TRAVIS_BUILD_DIR"
-    # This generates a `web` directory containing the website.
-    git clone https://${DEPLOY_KEY}@github.com/dCremins/add-ons repo_clone
-    cd repo_clone
-    git checkout development
-    git add .
-    git -c user.name='travis'
-    git -c user.email='travis'
-    git push origin head:master
-    cd "$TRAVIS_BUILD_DIR"
+    repo_temp=$(mktemp -d)
+    git clone "https://github.com/dCremins/add-ons" "$repo_temp"
+    cd "$repo_temp"
+    printf 'Checking out Master'
+    git checkout master
+    printf 'Merging %s\n' "$TRAVIS_COMMIT" >&2
+    git merge --ff-only "$TRAVIS_COMMIT"
+    printf 'Pushing to Add-Ons'
+    git push "https://$DEPLOY_KEY@github.com/dCremins/add-ons" \
+        "master" >/dev/null 2>&1
   fi
