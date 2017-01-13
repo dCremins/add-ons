@@ -5,7 +5,7 @@ GitHub Plugin URI: https://github.ncsu.edu/drcremin/itre-plugin
 GitHub Branch:      master
 GitHub Enterprise: https://github.ncsu.edu
 Description: Custom widgets and functions for ITRE website use
-Version: 1.5
+Version: 1.6
 Author: Devin Cremins
 Author URI: http://octopusoddments.com
 */
