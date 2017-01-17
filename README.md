@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/dCremins/add-ons.png?label=ready&title=Ready)](https://waffle.io/dCremins/add-ons)
 # [ITRE Widget](https://itre.ncsu.edu/)
 
 The Institute for Transportation Research and Education (ITRE) is an institutional center located at NC State University.
