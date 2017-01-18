@@ -1,100 +1,77 @@
 <?php
 function filter( $query ) {
-  if ( isset( $_REQUEST['search'] ) && $_REQUEST['search'] == 'advanced' && !is_admin() && $query->is_main_query()) {
-    if ($query->is_search) {
+  if ( $query->is_search && !is_admin() && $query->is_main_query()) {
+    if (isset( $_REQUEST['search'] ) && $_REQUEST['search'] == 'advanced' ) {
 
-      // Set Variables
-      /* Only get Author if Co-Author is installed */
-      if ( function_exists( 'coauthors_posts_links' ) ){
-        $termslug = $_POST['author'];
-      };
-      $search = $_POST['s'];
-      $start = $_POST['Sdate'];
-      $end = $_POST['Edate'];
-      $cat = $_POST['cat'];
-      /* Only get Files if Advanced Custom Fields is installed */
-      if ( isset($_POST['fileType']) ){
-        $fileType = $_POST['fileType'];
-      };
 
-      // Limit to Posts
+/* Limit to Posts */
       $query->set('post_type', 'post');
       $query->set('post_per_page', 20);
 
-      // Search by Keyword
-      if($search){
-        $query->set('s', $search);
+/* Keyword */
+      if ( isset($_POST['s']) ){
+        $query->set('s', $_POST['s']);
       }
 
-      // Search by Author
-      if ( function_exists( 'coauthors_posts_links' ) ){ // Co-Author Installed
-        if($termslug){
-          $query->set('author_name', $termslug);
-          //$SELECTauthor = $termslug;
-        };
-      };
+/* Author Name */
+      if ( isset($_POST['author']) ){
+        $query->set('author_name', $_POST['author']);
+      }
 
-      // Search by Category
-      if($cat){
-        $query->set( 'category_name', $cat);
-      //  $SELECTcat = $cat;
-      };
+/* Category */
+      if ( isset($_POST['cat']) ){
+        $query->set( 'category_name', $_POST['cat']);
+      }
 
-      // Search by File Type
-      if ( isset($fileType) ){ // ACF Installed
-        // Run SQL Replace Function
+/* Date */
+      if ( isset($_POST['startDate']) && isset($_POST['endDate']) ){
+        $date_query = array(
+          array(
+            'after'     => $_POST['startDate'],
+            'before'    => $_POST['endDate'],
+            'inclusive' => true,
+          ),
+        );
+        $query->set( 'date_query', $date_query );
+      } else {
+        if ( isset($_POST['endDate']) ){
+          $date_query = array(
+            array(
+              'after'     => $_POST['endDate'],
+              'inclusive' => true,
+            ),
+          );
+          $query->set( 'date_query', $date_query );
+        }
+        if ( isset($_POST['startDate']) ){
+          $date_query = array(
+            array(
+              'after'     => $_POST['startDate'],
+              'inclusive' => true,
+            ),
+          );
+          $query->set( 'date_query', $date_query );
+        }
+      }
+
+/* File Type */
+      if ( isset($_POST['fileType']) ){
         add_filter('posts_where', 'my_posts_where');
-
         $query->set(
           'meta_query',
           array(
             array(
               'key'		=> 'files_%_type',
 		          'compare'	=> '==',
-		          'value'		=> $fileType,
+		          'value'		=> $_POST['fileType'],
             )
           )
         );
-      };
+      }
 
-      // Search between Dates
-      if($start && $end){      // Both dates picked
-        $date_query = array(
-          array(
-            'after'     => $start,
-            'before'    => $end,
-            'inclusive' => true,
-          ),
-        );
-        $query->set( 'date_query', $date_query );
-      } else {      // Only one date picked
+    } // End If Advanced Search
+  } // End If Search
 
-      // AFTER this date
-        if($start){
-          $date_query = array(
-            array(
-              'after'     => $start,
-              'inclusive' => true,
-            ),
-          );
-          $query->set( 'date_query', $date_query );
-        };
-
-        // BEFORE this date
-        if($end){
-          $date_query = array(
-            array(
-              'before'     => $end,
-              'inclusive' => true,
-            ),
-          );
-          $query->set( 'date_query', $date_query );
-        };
-
-      };// End Date Search
-
-    };
-  };
   return $query;
 
 }; // End Function
