@@ -1,4 +1,4 @@
-[![Stories in Ready](https://badge.waffle.io/dCremins/add-ons.png?label=ready&title=Ready)](https://waffle.io/dCremins/add-ons)
+[![Stories in Ready](https://badge.waffle.io/dCremins/add-ons.png?label=ready&title=Ready)](https://waffle.io/dCremins/add-ons) [![Build Status](https://travis-ci.org/dCremins/add-ons.svg?branch=master)](https://travis-ci.org/dCremins/add-ons)
 # [ITRE Widget](https://itre.ncsu.edu/)
 
 The Institute for Transportation Research and Education (ITRE) is an institutional center located at NC State University.
@@ -21,4 +21,4 @@ This plugin adds institute specific functions and styling for use with [Wordpres
 
 ## Plugin Code
 
-Files in `lib` are compiled in `functions.php` while `style.scss` and `admin.scss` compile front facing and admin styles respectively. 
+Files in `lib` are compiled in `functions.php` while `style.scss` and `admin.scss` compile front facing and admin styles respectively.
