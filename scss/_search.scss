@@ -1,4 +1,4 @@
- form.search-form {
+.search-form {
   .divider {
     flex: 1;
     padding: 20px 10px 0;
@@ -15,42 +15,19 @@
     }
   }
 
-  .dateSearch{
-    flex: 2;
-
-    @media (max-width: 1200px) {
-      flex: 100%;
-    }
-
-    @media (max-width: 1200px) {
-      flex: 2;
-    }
-
-    input {
-      width: 100%;
-      &::-webkit-inner-spin-button {
-        display: none;
-      }
-      &::-webkit-datetime-edit {
-        padding-right:0;
-      }
-    }
-  }
-
   .input-group {
-    width:100%;
-    select.form-control {
-      width:100%;
+    width: 100%;
+
+    select {
+      background-color: $white;
       border: 0;
-      outline: 1px solid #CCC;
-      background-color: white;
-      //-webkit-appearance: none;
-      //-webkit-border-radius: 0;
-      //border-radius:0;
+      outline: 1px solid $gray-lighter;
+      width: 100%;
     }
-    span.input-group-btn {
-      width: 23%;
+
+    .input-group-btn {
       border-radius: 0;
+      width: 23%;
     }
 
     &.date-search {
@@ -64,14 +41,35 @@
       @media (max-width: 1200px) {
         flex-flow: none;
       }
-
-      input {
-        padding: 0 0 0 10px;
-      }
     }
   }
 
   button {
-    width:100%;
+    width: 100%;
+  }
+}
+
+.date-search {
+  flex: 2;
+
+  @media (max-width: 1200px) {
+    flex: 100%;
+  }
+
+  @media (max-width: 1200px) {
+    flex: 2;
+  }
+
+  input {
+    padding: 0 0 0 10px;
+    width: 100%;
+
+    &::-webkit-inner-spin-button {
+      display: none;
+    }
+
+    &::-webkit-datetime-edit {
+      padding-right: 0;
+    }
   }
 }
