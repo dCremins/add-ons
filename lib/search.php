@@ -1,87 +1,83 @@
 <?php
-function filter( $query ) {
-  if ( $query->is_search && !is_admin() && $query->is_main_query()) {
-    if (isset( $_REQUEST['search'] ) && $_REQUEST['search'] == 'advanced' ) {
-
-
+function filter($query)
+{
+    if ($query->is_search && !is_admin() && $query->is_main_query()) {
+        if (isset($_REQUEST['search']) && $_REQUEST['search'] == 'advanced') {
 /* Limit to Posts */
-      $query->set('post_type', 'post');
-      $query->set('post_per_page', 20);
+            $query->set('post_type', 'post');
+            $query->set('post_per_page', 20);
 
 /* Keyword */
-      if ( isset($_POST['s']) ){
-        $query->set('s', $_POST['s']);
-      }
+            if (isset($_POST['s'])) {
+                $query->set('s', $_POST['s']);
+            }
 
 /* Author Name */
-      if ( isset($_POST['author']) ){
-        $query->set('author_name', $_POST['author']);
-      }
+            if (isset($_POST['author'])) {
+                $query->set('author_name', $_POST['author']);
+            }
 
 /* Category */
-      if ( isset($_POST['cat']) ){
-        $query->set( 'category_name', $_POST['cat']);
-      }
+            if (isset($_POST['cat'])) {
+                $query->set('category_name', $_POST['cat']);
+            }
 
 /* Date */
-      if ( isset($_POST['startDate']) && isset($_POST['endDate']) ){
-        $date_query = array(
-          array(
-            'after'     => $_POST['startDate'],
-            'before'    => $_POST['endDate'],
-            'inclusive' => true,
-          ),
-        );
-        $query->set( 'date_query', $date_query );
-      } else {
-        if ( isset($_POST['endDate']) ){
-          $date_query = array(
-            array(
-              'after'     => $_POST['endDate'],
-              'inclusive' => true,
-            ),
-          );
-          $query->set( 'date_query', $date_query );
-        }
-        if ( isset($_POST['startDate']) ){
-          $date_query = array(
-            array(
-              'after'     => $_POST['startDate'],
-              'inclusive' => true,
-            ),
-          );
-          $query->set( 'date_query', $date_query );
-        }
-      }
+            if (isset($_POST['startDate']) && isset($_POST['endDate'])) {
+                $date_query = array(
+                    array(
+                        'after'         => $_POST['startDate'],
+                        'before'        => $_POST['endDate'],
+                        'inclusive' => true,
+                    ),
+                );
+                $query->set('date_query', $date_query);
+            } else {
+                if (isset($_POST['endDate'])) {
+                    $date_query = array(
+                        array(
+                            'after'         => $_POST['endDate'],
+                            'inclusive' => true,
+                        ),
+                    );
+                    $query->set('date_query', $date_query);
+                }
+                if (isset($_POST['startDate'])) {
+                    $date_query = array(
+                        array(
+                            'after'         => $_POST['startDate'],
+                            'inclusive' => true,
+                        ),
+                    );
+                    $query->set('date_query', $date_query);
+                }
+            }
 
 /* File Type */
-      if ( isset($_POST['fileType']) ){
-        add_filter('posts_where', 'my_posts_where');
-        $query->set(
-          'meta_query',
-          array(
-            array(
-              'key'		=> 'files_%_type',
-		          'compare'	=> '==',
-		          'value'		=> $_POST['fileType'],
-            )
-          )
-        );
-      }
+            if (isset($_POST['fileType'])) {
+                add_filter('posts_where', 'my_posts_where');
+                $query->set(
+                    'meta_query',
+                    array(
+                        array(
+                            'key'      => 'files_%_type',
+                            'compare'  => '==',
+                            'value'    => $_POST['fileType'],
+                        )
+                    )
+                );
+            }
+        } // End If Advanced Search
+    } // End If Search
 
-    } // End If Advanced Search
-  } // End If Search
-
-  return $query;
-
+    return $query;
 }; // End Function
 
-add_action( 'pre_get_posts', 'filter' );
+add_action('pre_get_posts', 'filter');
 
 // Replace SQL Query = with LIKE for Repeater Field
-function my_posts_where( $where ) {
-	$where = str_replace("meta_key = 'files_%", "meta_key LIKE 'files_%", $where);
-	return $where;
+function my_posts_where($where)
+{
+    $where = str_replace("meta_key = 'files_%", "meta_key LIKE 'files_%", $where);
+    return $where;
 }
-
- ?>
