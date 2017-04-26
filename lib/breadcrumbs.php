@@ -14,7 +14,7 @@ function breadcrumbs()
     $post_type_archive = get_post_type_archive_link($post_type);
     if ($post_type == 'research') {
         $archive_label = 'Research';
-        $post_type_archive = $url . '/research';
+        $post_type_archive = $url . 'research';
     }
 
 
