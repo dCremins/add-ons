@@ -47,10 +47,12 @@ class ItreSearch extends \WP_Widget
             $post = $wpdb->get_results($sql);
 /** Get the File Type sub field from the first post
 Then store the field object into our variable **/
-            if (get_field('files', $post[0]->post_id)) {
-                while (has_sub_field('files', $post[0]->post_id)) {
-                    $fileType = get_sub_field_object('type', $post[0]->post_id);
-                }
+            if ($post) {
+              if (get_field('files', $post[0]->post_id)) {
+                  while (has_sub_field('files', $post[0]->post_id)) {
+                      $fileType = get_sub_field_object('type', $post[0]->post_id);
+                  }
+              }
             }
         }
         ?>
