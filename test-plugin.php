@@ -1,11 +1,10 @@
 <?php
 /*
 Plugin Name: ITRE Add-Ons
-GitHub Plugin URI: https://github.ncsu.edu/drcremin/itre-plugin
+GitHub Plugin URI: https://github.com/dCremins/add-ons
 GitHub Branch:      master
-GitHub Enterprise: https://github.ncsu.edu
 Description: Custom widgets and functions for ITRE website use
-Version: 2.0.4
+Version: 2.0.5
 Author: Devin Cremins
 Author URI: http://octopusoddments.com
 */
