@@ -5,14 +5,13 @@ function breadcrumbs() {
     if (!is_front_page() && get_post_type()) {
 	    $post_type = get_post_type();
 	    if ($post_type == 'research') {
-	        $archive_label = 'Research';
-	        $post_type_archive = '/research';
+	        $archive_label = 'Archive';
+	        $post_type_archive = get_post_type_archive_link($post_type);
 	    } else {
 		    $post_type_object = get_post_type_object($post_type);
 		    $archive_label = $post_type_object->labels->name;
 		    $post_type_archive = get_post_type_archive_link($post_type);
 			}
-
         echo '<ol class="breadcrumb">';
 
 		    if (get_theme_mod('siteURL')) {
@@ -31,7 +30,7 @@ function breadcrumbs() {
             echo '</li>';
         } elseif (is_archive()) {
             echo '<li class="active">';
-            echo post_type_archive_title(false);
+            echo $archive_label;
             echo '</li>';
         } elseif (is_single()) {
             echo '<li><a href="';
