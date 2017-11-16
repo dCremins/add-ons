@@ -16,7 +16,7 @@ function breadcrumbs() {
 
 		    if (get_theme_mod('siteURL')) {
 					echo '<li><a href="' . get_theme_mod('siteURL') . '">Home</a></li>';
-		      echo '<li><a href="' . esc_url(home_url('/')) . '">' . get_bloginfo('name') . '</a></li>';
+		      echo '<li><a href="' . esc_url(home_url('/')) . '">' . get_option('blogdescription') . '</a></li>';
 		    } else {
 		      echo '<li><a href="' . esc_url(home_url('/')) . '">Home</a></li>';
 		    }
