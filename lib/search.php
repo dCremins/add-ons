@@ -13,9 +13,15 @@ function filter($query)
             }
 
 /* Author Name */
-            if (isset($_POST['author'])) {
-                $query->set('author_name', $_POST['author']);
-            }
+						if (isset($_POST['authors']) && $_POST['authors'] != '') {
+							$query->set('tax_query', [
+								[
+									'taxonomy' 	=> 'byline',
+									'field' 		=> 'slug',
+									'terms' 		=> $_POST['authors']
+								]
+							]);
+						}
 
 /* Category */
             if (isset($_POST['cat'])) {

@@ -31,22 +31,14 @@ class ItreSearch extends \WP_Widget
     public function widget($args, $instance)
     {
         global $post, $post_ID, $wpdb;
-// Get Authors Options
-        if (function_exists('coauthors_posts_links')) { // If Co Authors Installed
-            global $coauthors_plus;
-            $args = array('post_type' => 'guest-author', 'numberposts' => -1, 'orderby' => 'title', 'order' => 'ASC');
-            $guest_authors = get_posts($args);
-            $tax = $coauthors_plus->coauthor_taxonomy;
-            $terms = get_terms($tax);
-        }
         $category = get_categories();
 // Get File Type Options
         if (class_exists('acf')) { // If ACF Installed
-/** Dynamically get the Post ID of the first post **/
+// Dynamically get the Post ID of the first post
             $sql = $wpdb->prepare("select post_id from " . $wpdb->prefix . "postmeta where meta_key = %s limit 0,1 ", 'files');
             $post = $wpdb->get_results($sql);
-/** Get the File Type sub field from the first post
-Then store the field object into our variable **/
+// Get the File Type sub field from the first post
+// Then store the field object into our variable
             if ($post) {
               if (get_field('files', $post[0]->post_id)) {
                   while (has_sub_field('files', $post[0]->post_id)) {
@@ -68,22 +60,26 @@ Then store the field object into our variable **/
 <!-- /Keyword -->
 
 <!-- Author -->
-            <?php if (function_exists('coauthors_posts_links')) {?>
-            <div class="input-group">
-                <label for="<?php echo $tax; ?>" class=""><?php _e('Select an Author: ', 'textdomain'); ?></label><br>
-                <select name="<?php echo $tax; ?>" class="form-control">
-                    <optgroup label="Authors">
-                        <option selected value="">All Authors</option>
-                    <?php
-                    foreach ($guest_authors as $ga) {?>
-                        <option value="<?php echo $ga->post_name; ?>"><?php echo $ga->post_title; ?></option>
-                    <?php
-                    };
-                    ?>
-                    </optgroup>
-                </select>
-            </div>
-            <?php }; ?>
+					<?php if (class_exists( 'Bylines\Objects\Byline' )) {
+						 $terms = get_terms('byline');?>
+             <div class="input-group">
+	             <label for="authors" class=""><?php _e('Select an Author: ', 'textdomain'); ?></label><br>
+							 <select name="authors"  class="form-control">
+								 <optgroup label="Authors">
+									 <option selected value="">All Authors</option>
+									 <?php foreach ($terms as $byline) {
+										 if ((get_user_by('ID', $byline->ID)) || get_user_by('slug', $byline->slug)) {
+											 //
+											 echo 'nope';
+										 } else { ?>
+											 <option value="<?php echo $byline->slug; ?>"><?php echo $byline->name; ?></option>
+									 <?php  }
+									 ?>
+									 <?php }; ?>
+								 </optgroup>
+							 </select>
+					 	</div>
+					 <?php }?>
 <!-- /Author -->
 
 <!-- Category -->
@@ -104,7 +100,7 @@ Then store the field object into our variable **/
 
 <!-- File Type -->
         <?php
-        if (function_exists('the_field') && get_field('files')) { ?>
+        if (class_exists('acf') && get_field('files')) { ?>
             <div class="input-group">
               <label for="fileType" class=""><?php _e('Select a Document Type: ', 'textdomain'); ?></label><br>
               <select name="fileType" class="form-control">
