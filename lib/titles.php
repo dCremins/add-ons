@@ -14,7 +14,7 @@ function searchTitle() {
   }
 
   if (isset( $_POST['authors'] ) && $_POST['authors'] != '') {
-    $title .= " by <span class='search-term'>" . $_POST['authors'] . '</span>';
+    $title .= " by <span class='search-term'>" . get_term_by('slug', $_POST['authors'], 'byline')->name . '</span>';
   }
 
   if (isset( $_POST['startDate'] ) && isset( $_POST['endDate'] ) && $_POST['endDate'] != '' && $_POST['startDate'] != ''){

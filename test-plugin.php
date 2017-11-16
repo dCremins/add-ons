@@ -4,7 +4,7 @@ Plugin Name: ITRE Add-Ons
 GitHub Plugin URI: https://github.com/dCremins/add-ons
 GitHub Branch:      master
 Description: Custom widgets and functions for ITRE website use
-Version: 2.1.1
+Version: 2.1.2
 Author: Devin Cremins
 Author URI: http://octopusoddments.com
 */
