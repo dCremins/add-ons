@@ -1,6 +1,6 @@
 <?php
 $include = [
-  //'/lib/titles.php',       // Change Page Titles
+  '/lib/titles.php',       // Change Page Titles
   '/lib/breadcrumbs.php',  // Add NCSU Styled Breadcrumbs
   '/lib/shortcode.php',    // Shortcode
   '/lib/shortcake.php',    // Shortcake UI
