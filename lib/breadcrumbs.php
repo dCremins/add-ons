@@ -28,6 +28,19 @@ function breadcrumbs() {
             $cat = get_category(get_query_var('cat'));
             echo $cat->name;
             echo '</li>';
+        } elseif (is_author()) {
+            echo '<li><a href="';
+            echo $post_type_archive;
+            echo '">'.$archive_label;
+            echo '</a></li>';
+            echo '<li class="active">';
+						if (class_exists( 'Bylines\Objects\Byline' )) {
+							$author = get_term(get_queried_object()->term_id);
+				      echo $author->name;
+						} else {
+				      echo get_the_author();
+						}
+            echo '</li>';
         } elseif (is_archive()) {
             echo '<li class="active">';
             echo $archive_label;
