@@ -6,12 +6,31 @@ function news_ui() {
     "hide_empty" => 0,
     "type"       => "post"
   );
-  $category = get_categories($args);
+  $category = get_categories();
+	$post_types = get_post_types('', 'names');
 
-  $test = array('' => 'All Categories');
-    foreach( $category as $cats ){
-      $test[$cats->slug] = $cats->name;
-    }
+  $types = array('' => 'Default');
+  foreach( $post_types as $type ){
+		if ($type == 'attachment'
+		|| $type == 'acf-field'
+		|| $type == 'acf-field-group'
+		|| $type == 'guest-author'
+		|| $type == 'page'
+		|| $type == 'revision'
+		|| $type == 'nav_menu_item'
+		|| $type == 'custom_css'
+		|| $type == 'customize_changeset'
+		|| $type == 'oembed_cache') {
+				continue;
+		}
+    $types[$type] = ucfirst($type);
+  }
+
+  $cat = array('' => 'All Categories');
+  foreach( $category as $cats ){
+    $cat[$cats->slug] = $cats->name;
+  }
+
   shortcode_ui_register_for_shortcode(
     'itre_news',
     array(
@@ -23,8 +42,28 @@ function news_ui() {
             'attr'         => 'title',
             'type'         => 'text',
             'meta'         => array(
-              'placeholder'=> 'New Title',
+              'placeholder'=> '',
             ),
+          ),
+          array(
+            'label'        => 'Link',
+            'attr'         => 'link',
+            'type'         => 'text',
+            'meta'         => array(
+              'placeholder'=> '',
+            ),
+          ),
+          array(
+            'label'        => 'Category',
+            'attr'         => 'category',
+            'type'         => 'select',
+            'options'      => $cat,
+          ),
+          array(
+            'label'        => 'Post Type',
+            'attr'         => 'type',
+            'type'         => 'select',
+            'options'      => $types,
             'description'  => 'Choose a Layout',
           ),
           array(
@@ -60,10 +99,17 @@ function news_ui() {
             ),
           ),
           array(
-            'label'        => 'Category',
-            'attr'         => 'category',
-            'type'         => 'select',
-            'options'      => $test,
+            'label'        => '<span class="icon-three-layout">',
+            'attr'         => 'layout',
+            'type'         => 'radio',
+            'options'      => array(
+                'layoutE'  => '',
+            ),
+          ),
+          array(
+            'label'        => 'Show Featured Image?',
+            'attr'         => 'feature',
+            'type'         => 'checkbox',
           ),
         ),
       )
