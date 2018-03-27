@@ -18,13 +18,13 @@ function itre_news_shortcode($atts) {
 		 $class = 'layout-a';
    } elseif ($layout == 'layoutB') {
      $number = 2;
-		 $class = 'layout-a';
+		 $class = 'layout-b';
    } elseif ($layout == 'layoutC') {
      $number = 4;
-		 $class = 'layout-a';
+		 $class = 'layout-c';
    } elseif ($layout == 'layoutD') {
      $number = 4;
-		 $class = 'layout-a';
+		 $class = 'layout-d';
    } elseif ($layout == 'layoutE') {
      $number = 4;
 		 $class = 'layout-e';
@@ -53,7 +53,7 @@ function itre_news_shortcode($atts) {
 	 }
 
 	 if ($the_query->have_posts()) {
-		 $output .='<div class="flex">';
+		 $output .='<div class="flex flex-' . $class . '">';
 		 while ($the_query->have_posts()) {
 			 $the_query->the_post();
 			 $output .='<article class="news-front ' . $class . '">';
@@ -61,17 +61,19 @@ function itre_news_shortcode($atts) {
 			 if ((has_post_thumbnail()) && ($feature === 'true')) {
 				 $id = get_the_ID();
 				 $output .='<div class="news-image">';
-				 if ($layout == 'layoutA' || $layout == 'layoutD') {
-					 if ($the_query->current_post == 0 && !is_paged() && $layout == 'layoutA') {
-						 $output .= get_the_post_thumbnail($id, 'single-post-thumbnail');
-					 } else {
-						 $output .= get_the_post_thumbnail($id, 'news-post-thumbnail');
-					 }
-				 } elseif ($layout == 'layoutC') {
-					 $output .= get_the_post_thumbnail($id, 'author-post-thumbnail');
-				 } else {
-					 $output .= get_the_post_thumbnail($id, 'news-wide-post-thumbnail');
-				 }
+ 					switch ($layout) {
+ 						case 'layoutA':
+ 						case 'layoutD':
+ 							$output .= get_the_post_thumbnail($id, 'itre-news-lg');
+ 							break;
+ 						case 'layoutC':
+						case 'layoutE':
+ 							$output .= get_the_post_thumbnail($id, 'itre-news-sm');
+ 							break;
+ 						default:
+ 							$output .= get_the_post_thumbnail($id, 'itre-news-md');
+ 							break;
+						}
 				 $output .='</div>';
 			 }
 			 if ($layout == 'layoutC') {
@@ -81,9 +83,11 @@ function itre_news_shortcode($atts) {
 				 $output .='</p>';
 				 $output .='</div>';
 			 } else {
+				 $output .='<div class="news-text">';
 				 $output .='<h5>' . get_the_title() . '</h5>';
 				 $output .='<p>' . get_the_excerpt();
 				 $output .='</p>';
+				 $output .='</div>';
 			 }
 			 $output .='</a></article>';
 		 }

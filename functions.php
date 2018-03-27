@@ -24,6 +24,8 @@ foreach ($include as $file) {
 }
 unset($file, $filepath);
 
-
+add_image_size('itre-news-lg',600,400,true);
+add_image_size('itre-news-md',500,300,true);
+add_image_size('itre-news-sm',400,200,true);
 
 ?>

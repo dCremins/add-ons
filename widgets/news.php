@@ -167,23 +167,25 @@ class ItreNews extends \WP_Widget {
     $the_query = new \WP_Query($stuff);
 
     if ($the_query->have_posts()) {
-			echo '<div class="flex">';
+			echo '<div class="flex flex-' . $class . '">';
 			while ($the_query->have_posts()) {
 				$the_query->the_post();
         echo '<article class="news-front' . $class . '">';
         echo '<a class="more" href="' . the_permalink() . '">';
         if ((has_post_thumbnail()) && ($feature === 'true')) {
 					echo '<div class="news-image">';
-					if ($class == 'layout-a' || $class == 'layout-d') {
-						if ($the_query->current_post == 0 && !is_paged() && $class == 'layout-a') {
-							the_post_thumbnail('single-post-thumbnail');
-						} else {
-							the_post_thumbnail('news-post-thumbnail');
-						}
-					} elseif ($class == 'layout-c') {
-						the_post_thumbnail('author-post-thumbnail');
-					} else {
-						the_post_thumbnail('news-wide-post-thumbnail');
+					switch ($class) {
+						case 'layout-a':
+						case 'layout-d':
+							the_post_thumbnail('itre-news-lg');
+							break;
+						case 'layout-c':
+						case 'layout-e':
+							the_post_thumbnail('itre-news-sm');
+							break;
+						default:
+							the_post_thumbnail('itre-news-md');
+							break;
 					}
 					echo '</div>';
 				}
@@ -194,9 +196,11 @@ class ItreNews extends \WP_Widget {
 					echo '</p>';
 					echo '</div>';
 				} else {
+					echo '<div class="news-text">';
 					echo '<h5>' . get_the_title() . '</h5>';
 					echo '<p>' . get_the_excerpt();
 					echo '</p>';
+					echo '</div>';
 				}
         echo '</a></article>';
 			}

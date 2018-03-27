@@ -2,9 +2,9 @@
 /*
 Plugin Name: ITRE Add-Ons
 GitHub Plugin URI: https://github.com/dCremins/add-ons
-GitHub Branch:      master
+GitHub Branch: master
 Description: Custom widgets and functions for ITRE website use
-Version: 2.1.5
+Version: 2.2.0
 Author: Devin Cremins
 Author URI: http://octopusoddments.com
 */
@@ -19,10 +19,4 @@ add_action('wp_enqueue_scripts', function () {
 /* Add Admin.css */
 add_action('admin_enqueue_scripts', function () {
     wp_enqueue_style('adminCSS', plugins_url('/admin.css', __FILE__));
-});
-
-/* Add Image Sizes */
-add_action('init', function () {
-    add_image_size('news-post-thumbnail', 230, 170, true);
-    add_image_size('news-wide-post-thumbnail', 400, 250, true);
 });
