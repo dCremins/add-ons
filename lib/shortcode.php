@@ -60,7 +60,7 @@ function itre_news_shortcode($atts) {
 			 $output .='<a class="more" href="' . get_the_permalink() . '">';
 			 if ((has_post_thumbnail()) && ($feature === 'true')) {
 				 $id = get_the_ID();
-				 $output .='<div class="news-image">';
+				 $output .='<span class="news-image">';
  					switch ($layout) {
  						case 'layoutA':
  						case 'layoutD':
@@ -74,20 +74,20 @@ function itre_news_shortcode($atts) {
  							$output .= get_the_post_thumbnail($id, 'itre-news-md');
  							break;
 						}
-				 $output .='</div>';
+				 $output .='</span>';
 			 }
 			 if ($layout == 'layoutC') {
-				 $output .='<div class="flex-text">';
+				 $output .='<span class="flex-text">';
 				 $output .='<h6>' . get_the_title() . '</h6>';
 				 $output .='<p>' . get_the_excerpt();
 				 $output .='</p>';
-				 $output .='</div>';
+				 $output .='</span>';
 			 } else {
-				 $output .='<div class="news-text">';
+				 $output .='<span class="news-text">';
 				 $output .='<h5>' . get_the_title() . '</h5>';
 				 $output .='<p>' . get_the_excerpt();
 				 $output .='</p>';
-				 $output .='</div>';
+				 $output .='</span>';
 			 }
 			 $output .='</a></article>';
 		 }

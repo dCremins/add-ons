@@ -173,7 +173,7 @@ class ItreNews extends \WP_Widget {
         echo '<article class="news-front' . $class . '">';
         echo '<a class="more" href="' . the_permalink() . '">';
         if ((has_post_thumbnail()) && ($feature === 'true')) {
-					echo '<div class="news-image">';
+					echo '<span class="news-image">';
 					switch ($class) {
 						case 'layout-a':
 						case 'layout-d':
@@ -187,20 +187,20 @@ class ItreNews extends \WP_Widget {
 							the_post_thumbnail('itre-news-md');
 							break;
 					}
-					echo '</div>';
+					echo '</span>';
 				}
 				if ($class == 'layout-c') {
-					echo '<div class="flex-text">';
+					echo '<span class="flex-text">';
 					echo '<h6>' . get_the_title() . '</h6>';
 					echo '<p>' . get_the_excerpt();
 					echo '</p>';
-					echo '</div>';
+					echo '</span>';
 				} else {
-					echo '<div class="news-text">';
+					echo '<span class="news-text">';
 					echo '<h5>' . get_the_title() . '</h5>';
 					echo '<p>' . get_the_excerpt();
 					echo '</p>';
-					echo '</div>';
+					echo '</span>';
 				}
         echo '</a></article>';
 			}
