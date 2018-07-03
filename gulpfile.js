@@ -4,7 +4,7 @@ const sourcemaps = require('gulp-sourcemaps')
 const cleanCSS = require('gulp-clean-css')
 const plumber = require('gulp-plumber')
 
-gulp.task('css', function() {
+gulp.task('default', function() {
   return gulp.src(['./scss/style.scss', './scss/admin.scss'])
 	  .pipe(plumber())
 		.pipe(sourcemaps.init())

@@ -170,7 +170,7 @@ class ItreNews extends \WP_Widget {
 			echo '<div class="flex flex-' . $class . '">';
 			while ($the_query->have_posts()) {
 				$the_query->the_post();
-        echo '<article class="news-front' . $class . '">';
+        echo '<article class="news-front ' . $class . '">';
         echo '<a class="more" href="' . get_the_permalink() . '">';
         if ((has_post_thumbnail()) && ($feature === 'true')) {
 					echo '<span class="news-image">';
